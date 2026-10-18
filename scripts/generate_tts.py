@@ -117,6 +117,19 @@ TECH_PHONETICS = {
     "log": "lóc",
     "done": "đơn",
     "follow": "phô-lâu",
+    "typeof": "típ-ọp",
+    "nan": "en-ây-en",
+    "senior": "xi-ni-ơ",
+    "junior": "du-ni-ơ",
+    "true": "tru",
+    "false": "phôn",
+    "undefined": "ăn-đi-phai",
+    "hoisting": "hoi-xờ-tinh",
+    "var": "va",
+    "quiz": "quít",
+    "interview": "in-tơ-viu",
+    "comment": "côm-mừn",
+    "primitive": "pri-mi-típ",
 }
 
 def transform_phonetics(original_text: str):
@@ -143,7 +156,10 @@ def transform_phonetics(original_text: str):
             display_tokens.append(tok)
         else:
             spoken_tokens.append(tok)
-            display_tokens.append(tok)
+            # Only add to display_tokens if it contains spoken word characters;
+            # standalone punctuation like '...' or '—' produces no WordBoundary event in Edge-TTS.
+            if re.search(r"[\w]", tok):
+                display_tokens.append(tok)
 
     spoken_text = " ".join(spoken_tokens)
     return spoken_text, display_tokens

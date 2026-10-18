@@ -20,6 +20,8 @@ import { reactRerenderEpisode } from "./series/series-a/data/react-rerender";
 import { jsEventLoopEpisode } from "./series/series-a/data/js-event-loop";
 import { AsyncForeachShort } from "./series/series-a/AsyncForeachShort";
 import { asyncForeachEpisode } from "./series/series-a/data/async-foreach";
+import { JsInterviewQuizShort } from "./series/series-a/JsInterviewQuizShort";
+import { jsInterviewQuizEpisode } from "./series/series-a/data/js-interview-quiz";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -169,6 +171,25 @@ export const RemotionRoot: React.FC = () => {
             width={1080}
             height={1920}
             defaultProps={asyncForeachEpisode.thumbnail}
+          />
+        )}
+
+        <Composition
+          id="JsInterviewQuiz"
+          component={JsInterviewQuizShort}
+          durationInFrames={jsInterviewQuizEpisode.subtitles.durationInFrames || 1669}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={jsInterviewQuizEpisode}
+        />
+        {jsInterviewQuizEpisode.thumbnail && (
+          <Still
+            id="JsInterviewQuiz-Thumbnail"
+            component={VideoThumbnail}
+            width={1080}
+            height={1920}
+            defaultProps={jsInterviewQuizEpisode.thumbnail}
           />
         )}
       </Folder>
