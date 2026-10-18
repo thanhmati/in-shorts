@@ -18,6 +18,8 @@ import {
 } from "./core/motion/SceneTransitionPreview";
 import { reactRerenderEpisode } from "./series/series-a/data/react-rerender";
 import { jsEventLoopEpisode } from "./series/series-a/data/js-event-loop";
+import { AsyncForeachShort } from "./series/series-a/AsyncForeachShort";
+import { asyncForeachEpisode } from "./series/series-a/data/async-foreach";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -148,6 +150,25 @@ export const RemotionRoot: React.FC = () => {
             width={1080}
             height={1920}
             defaultProps={jsEventLoopEpisode.thumbnail}
+          />
+        )}
+
+        <Composition
+          id="AsyncForeach"
+          component={AsyncForeachShort}
+          durationInFrames={asyncForeachEpisode.subtitles.durationInFrames || 1270}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={asyncForeachEpisode}
+        />
+        {asyncForeachEpisode.thumbnail && (
+          <Still
+            id="AsyncForeach-Thumbnail"
+            component={VideoThumbnail}
+            width={1080}
+            height={1920}
+            defaultProps={asyncForeachEpisode.thumbnail}
           />
         )}
       </Folder>

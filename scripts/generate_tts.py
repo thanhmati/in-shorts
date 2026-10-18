@@ -101,6 +101,22 @@ TECH_PHONETICS = {
     "settimeout": "xét-tam-ao",
     "vip": "víp",
     "memo": "mê-mô",
+    "foreach": "pho-ít",
+    "for": "pho",
+    "of": "ọp",
+    "map": "mép",
+    "all": "on",
+    "save": "xêu",
+    "savedb": "xêu-đi-bi",
+    "db": "đi-bi",
+    "user": "du-sơ",
+    "users": "du-sơ",
+    "item": "ai-từm",
+    "items": "ai-từm",
+    "console": "con-xôn",
+    "log": "lóc",
+    "done": "đơn",
+    "follow": "phô-lâu",
 }
 
 def transform_phonetics(original_text: str):
