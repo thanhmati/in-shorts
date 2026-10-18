@@ -77,6 +77,20 @@ in-shorts/
 │   │   ├── MacWindow.tsx               # Cửa sổ giả lập MacOS (3 nút traffic lights)
 │   │   ├── CodeBlock.tsx               # Prism Syntax Highlighter + Animated Breathing Line Pulse
 │   │   ├── KineticCaptions.tsx         # Phụ đề nhảy từng từ với spring bounce & neon glow
+│   │   ├── motion/                     # THƯ VIỆN ĐỒ HỌA CHUYỂN ĐỘNG CHUẨN HÓA (MOTION PRIMITIVES)
+│   │   │   ├── KineticTypography.tsx   # Text động (Hook, Keywords, Phân cảnh)
+│   │   │   ├── CodeReveal.tsx          # Xuất hiện code theo từng dòng mượt mà
+│   │   │   ├── CodeFocus.tsx           # Spotlight dòng code trọng tâm, làm mờ xung quanh
+│   │   │   ├── BeforeAfter.tsx         # So sánh code/kiến trúc Trước - Sau
+│   │   │   ├── NodeGraph.tsx           # Sơ đồ topology mạng/hệ thống động
+│   │   │   ├── PacketFlow.tsx          # Mô phỏng gói tin HTTP/Message queue di chuyển
+│   │   │   ├── TerminalSequence.tsx    # Giả lập gõ lệnh CLI và xuất log
+│   │   │   ├── ProgressMetric.tsx      # Bộ đếm hiệu năng, thanh đo benchmark O(N) vs O(1)
+│   │   │   ├── StateTransition.tsx     # Chuỗi chuyển đổi trạng thái (State machine)
+│   │   │   ├── CameraMove.tsx          # Cận cảnh camera (Punch-in, drift, focus shift)
+│   │   │   ├── SoundCue.tsx            # Âm thanh hiệu ứng đồng bộ frame (Whoosh, pop, ding)
+│   │   │   ├── SceneTransition.tsx     # Bộ phối hợp đa phân cảnh (Wipe, fade, slide, cut)
+│   │   │   └── index.ts                # Entrypoint xuất khẩu motion components
 │   │   └── graphics/                   # Bộ Animation & Motion Graphics cao cấp
 │   │       ├── AmbientBackground.tsx   # Living canvas: 3 Glow Orbs trôi nổi, Dot Grid, Light Sweep
 │   │       ├── FloatingBadge.tsx       # Huy hiệu nổi 3D dao động góc nhìn (Perspective tilt)
@@ -239,3 +253,63 @@ Mọi video được sinh ra bắt buộc phải đi kèm **Bộ Thumbnail đồ
 * **Facebook Reels**:
   * Caption: Bắt đầu bằng câu hỏi gợi mở thảo luận, tóm tắt 3 gạch đầu dòng ngắn gọn bài học rút ra, hashtag công nghệ.
 * **File lưu trữ & bàn giao**: Toàn bộ nội dung SEO copywriting được quản lý độc lập dưới dạng file Markdown tại `src/series/<series-id>/data/<slug>.seo.md` và `out/<slug>-seo.md` (tuyệt đối không nhét vào file code `.ts` để tránh làm rối cấu hình Remotion), sẵn sàng cho người dùng copy-paste xuất bản ngay lập tức.
+
+---
+
+## 8. Thư viện Đồ họa Chuyển động Chuẩn hóa (Motion Graphics Design System)
+
+Thư viện component tại `src/core/motion/` là bộ công cụ trực quan hóa cốt lõi, cung cấp 12 primitives chuyển động chuẩn hóa, có type-safe, tuân thủ nguyên tắc thuần Remotion và phục vụ toàn bộ 3 series nội dung.
+
+### 8.1. Danh mục Motion Primitives & Ứng dụng
+
+| Component | Vị trí file | Công dụng chính | Thuộc tính quan trọng (`props`) |
+|---|---|---|---|
+| **`KineticTypography`** | `src/core/motion/KineticTypography.tsx` | Text động cho Hook mở đầu, từ khóa kỹ thuật, chốt luận điểm | `text`, `type: "phrase" \| "words" \| "mask"`, `highlightWords`, `accentColor`, `fontSize` |
+| **`CodeReveal`** | `src/core/motion/CodeReveal.tsx` | Xuất hiện code theo nhịp đọc, giữ layout code ổn định | `code`, `language`, `startFrame`, `linesPerSecond`, `title`, `highlightRange` |
+| **`CodeFocus`** | `src/core/motion/CodeFocus.tsx` | Dẫn dắt sự chú ý vào đúng 1 dòng logic cốt lõi, làm mờ code râu ria | `code`, `targetLine`, `startFrame`, `focusFrame`, `dimOpacity: 0.25`, `markerType: "badge" \| "pill"` |
+| **`BeforeAfter`** | `src/core/motion/BeforeAfter.tsx` | So sánh đối chiếu trực quan Code Sai vs Đúng, Cũ vs Mới | `mode: "step-transform" \| "split" \| "wipe"`, `before`, `after`, `transitionFrame`, `transitionDuration` |
+| **`NodeGraph`** | `src/core/motion/NodeGraph.tsx` | Sơ đồ topology vi dịch vụ, database, gateway, client | `nodes: GraphNode[]`, `edges: GraphEdge[]`, `activeNodeId`, `startFrame`, `flowAnimation: boolean` |
+| **`PacketFlow`** | `src/core/motion/PacketFlow.tsx` | Mô phỏng đường đi của Request/Response, Kafka Event, CI/CD pipeline | `stages: PacketStage[]`, `activeStageIndex`, `startFrame`, `durationPerStage`, `statusLabel` |
+| **`TerminalSequence`** | `src/core/motion/TerminalSequence.tsx` | Giả lập Terminal macOS/Linux gõ lệnh CLI và xuất log | `command`, `prompt`, `typingDuration`, `executionDelay`, `outputs: TerminalLine[]`, `status` |
+| **`ProgressMetric`** | `src/core/motion/ProgressMetric.tsx` | Bộ đếm số tăng dần, thanh so sánh Benchmark $O(N)$ vs $O(1)$ | `type: "counter" \| "progress-bar" \| "benchmark-bars"`, `value`, `unit`, `benchmarkItems` |
+| **`StateTransition`** | `src/core/motion/StateTransition.tsx` | Biểu diễn vòng đời trạng thái (Auth, Request, Component) | `states: LifecycleState[]`, `transitions: StateChangeTransition[]`, `initialStateId`, `mode` |
+| **`CameraMove`** | `src/core/motion/CameraMove.tsx` | Zoom cận cảnh vào chi tiết quan trọng mà không cắt mất phụ đề | `moves: CameraMoveSegment[]`, `initial`, `presets: subtleDrift, emphasisZoom, pullBack` |
+| **`SoundCue`** | `src/core/motion/SoundCue.tsx` | Phát âm thanh hiệu ứng đúng frame visual xuất hiện | `type: "whoosh" \| "pop" \| "ding"`, `atFrame`, `volume: 0.28` (an toàn cho giọng đọc) |
+| **`SceneTransition`** | `src/core/motion/SceneTransition.tsx` | Phối hợp chuỗi phân cảnh (`TransitionSeries`) và tự đồng bộ SFX | `scenes: SceneItem[]`, `transitionToNext: { type: "wipe" \| "fade" \| "slide" \| "iris" \| "cut" }` |
+
+### 8.2. Bản đồ Phối hợp Primitives theo Từng Series
+
+1. **Series A — Coding Tips (Mẹo & Tối ưu Code)**:
+   * **Hook**: `KineticTypography` (dạng `mask` hoặc `words` nhấn mạnh nỗi đau bug).
+   * **Phân cảnh Code Lỗi**: `CodeReveal` xuất hiện từng dòng $\to$ `CodeFocus` spotlight dòng sai $\to$ `CameraMove` emphasis zoom $1.10$.
+   * **Chuyển cảnh Giải pháp**: `SceneTransition` (`wipe` hoặc `slide` + `SoundCue: "whoosh"`).
+   * **Phân cảnh Code Chuẩn**: `BeforeAfter` so sánh trực diện $\to$ `ProgressMetric` đo tốc độ nhảy vọt ($40x$ nhanh hơn) $\to$ `SoundCue: "ding"`.
+
+2. **Series B — System Design (Kiến trúc Hệ thống)**:
+   * **Hook**: `KineticTypography` tạo tò mò về traffic nghìn user.
+   * **Topology**: `NodeGraph` dựng các cụm service, database, cache, balancer.
+   * **Dòng chảy dữ liệu**: `PacketFlow` bắn gói tin di chuyển giữa các node theo kịch bản.
+   * **Trạng thái hệ thống**: `StateTransition` mô tả vòng đời (Pending $\to$ Processing $\to$ Cached).
+   * **Góc quay**: `CameraMove` pan nhẹ theo hướng packet chuyển động.
+
+3. **Series C — Developer Tools (Công cụ & Workflow)**:
+   * **Giao diện dòng lệnh**: `TerminalSequence` gõ lệnh git, docker, bun, pnpm, xuất log màu.
+   * **So sánh công cụ**: `BeforeAfter` (cách làm thủ công vs dùng tool tự động).
+   * **Benchmark tốc độ build**: `ProgressMetric` thanh đo so sánh thời gian bundle.
+
+### 8.3. Quy tắc Tính toán Timeline Overlap khi Chuyển Cảnh
+
+Khi sử dụng `SceneSequence` (`src/core/motion/SceneTransition.tsx`), hai phân cảnh chuyển tiếp bằng hiệu ứng động (`fade`, `wipe`, `slide`, `iris`) có thời lượng chuyển cảnh $T$ sẽ **gối đầu (overlap)** lên nhau:
+
+$$\text{Tổng thời lượng (Total Frames)} = \sum_{i=0}^{N-1} D_i - \sum_{i=0}^{N-2} T_i$$
+
+* **Ràng buộc an toàn**: $T_i < \min(D_i, D_{i+1})$. Tuyệt đối không để thời gian chuyển cảnh dài hơn thời lượng của chính phân cảnh đó.
+* **Đồng bộ Âm thanh**: Hàm `calculateSceneTimingBoundaries(scenes)` tự động kích hoạt `SoundCue` tại đúng frame bắt đầu chuyển cảnh: $t_{\text{start}} = \text{endFrame} - T$.
+
+### 8.4. Tiêu chuẩn Âm thanh Hiệu ứng (Sound Cue Standards)
+
+* **Kho âm thanh gốc**: Lưu trữ tại `public/sfx/`:
+  * `whoosh.wav`: Dùng cho chuyển cảnh lướt (`wipe`, `slide`) hoặc camera push-in nhanh.
+  * `pop.wav`: Dùng cho xuất hiện badge, card, node mới hoặc cắt cảnh nhanh (`cut`).
+  * `ding.wav`: Dùng cho trạng thái thành công, bài học cốt lõi, code fix xong (`fade`).
+* **Giới hạn âm lượng an toàn**: Luôn đặt `volume` trong khoảng `0.25 – 0.32` (mặc định `0.28`). Nghiêm cấm đặt `volume > 0.40` để tránh át tiếng thuyết minh giọng đọc của kịch bản.

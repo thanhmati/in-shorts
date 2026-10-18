@@ -104,3 +104,31 @@ Do not imply that a video has been rendered merely because its composition is re
 Provide the verified paths for the thumbnail and SEO file, the preview instructions, the checks performed, and any remaining limitations.
 
 Only render the final MP4 when explicitly requested, unless the user has authorized a different workflow.
+
+## 10. MOTION GRAPHICS & VISUAL PRIMITIVES USAGE GUIDELINES
+
+AI agents MUST reuse the standardized motion graphics library in `src/core/motion/` instead of implementing bespoke, one-off animations.
+
+### Component Selection Decision Matrix
+
+| Storytelling Need | Required Motion Primitive | Best Practice |
+|---|---|---|
+| **Hook / Title / Technical Terms** | `KineticTypography` | Use `type="phrase"` or `"words"` for dynamic pacing; use `accentKeywords` to highlight keywords. |
+| **Progressive Code Walkthrough** | `CodeReveal` | Set `linesPerSecond` matching voice narration; keeps code panel height stable. |
+| **Spotlighting Critical Logic** | `CodeFocus` | Dim nonessential lines with `dimOpacity: 0.25`; place badge/pill indicator on focal line. |
+| **Old vs New / Bad vs Good** | `BeforeAfter` | Use `mode="step-transform"` for mobile screen clarity rather than two side-by-side full panels. |
+| **Architecture / Microservices** | `NodeGraph` | Define typed `nodes` and `edges`; use `flowAnimation` to show active connection paths. |
+| **Request / Event Flow** | `PacketFlow` | Animate packet along sequential stages; display status label chips per stage. |
+| **CLI / DevOps / Build Logs** | `TerminalSequence` | Simulate character-by-character typing with prompt; status-code colored output lines. |
+| **Benchmarks / Performance Gain** | `ProgressMetric` | Use `type="benchmark-bars"` to compare $O(N)$ vs $O(1)$ with `deltaBadge` ($40\times$ faster). |
+| **State Machine / Lifecycle** | `StateTransition` | Render step pipeline chain + hero card; specify causality triggers (`EVENT: ...`). |
+| **Cinematic Focus Shift** | `CameraMove` | **Wrap only the focal element** (e.g. `MacWindow`), NEVER wrap the root canvas or captions. |
+| **Synchronized Audio Feedback** | `SoundCue` | Map to `whoosh`, `pop`, `ding`. Keep `volume <= 0.32` so voiceover remains intelligible. |
+| **Multi-Scene Orchestration** | `SceneTransition` (`SceneSequence`) | Calculate total duration using $\sum D_i - \sum T_i$; auto-sync sound cues at transition points. |
+
+### Motion Execution Invariants
+
+1. **Pure Remotion Animations**: Always use `spring()` or `interpolate()`. Never use CSS `transition`.
+2. **Safe Framing**: Keep camera zoom clamped between $1.00$ and $1.15$ for focus beats. Never crop captions or header badges.
+3. **Typography Minimums**: Mobile safe target $\ge 56\text{px}$ for headlines, $\ge 24\text{px} - 26\text{px}$ for code, $\ge 34\text{px}$ for captions.
+4. **Reference Validation**: When authoring `NodeGraph`, `PacketFlow`, or `StateTransition`, verify that all referenced target IDs exist in the defined list.
