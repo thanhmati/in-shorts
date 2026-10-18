@@ -93,6 +93,13 @@ TECH_PHONETICS = {
     "loop": "lúp",
     "call": "con",
     "back": "bách",
+    "callback": "con-bách",
+    "callbacks": "con-bách",
+    "stack": "xờ-tách",
+    "microtask": "mai-cờ-rô-tác",
+    "macrotask": "mác-cờ-rô-tác",
+    "settimeout": "xét-tam-ao",
+    "vip": "víp",
     "memo": "mê-mô",
 }
 
