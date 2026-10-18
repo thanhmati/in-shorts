@@ -1,6 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig } from "remotion";
 import { THEME } from "./theme";
+import { AmbientBackground } from "./graphics/AmbientBackground";
 
 interface SafeLayoutProps {
   children: React.ReactNode;
@@ -22,7 +23,6 @@ export const SafeLayout: React.FC<SafeLayoutProps> = ({
         width,
         height,
         backgroundColor: THEME.colors.bg,
-        backgroundImage: `radial-gradient(circle at 50% 25%, rgba(56, 189, 248, 0.08) 0%, transparent 60%), radial-gradient(circle at 50% 80%, rgba(168, 85, 247, 0.06) 0%, transparent 50%)`,
         position: "relative",
         overflow: "hidden",
         display: "flex",
@@ -31,7 +31,10 @@ export const SafeLayout: React.FC<SafeLayoutProps> = ({
         boxSizing: "border-box",
       }}
     >
-      {/* Top Reading Progress Bar */}
+      {/* Living Ambient Motion Background */}
+      <AmbientBackground />
+
+      {/* Top Reading Progress Bar with Neon Glow */}
       {showProgressBar && (
         <div
           style={{
@@ -49,7 +52,7 @@ export const SafeLayout: React.FC<SafeLayoutProps> = ({
               height: "100%",
               width: `${progressPercent}%`,
               background: `linear-gradient(90deg, ${THEME.colors.accentCyan}, ${THEME.colors.accentEmerald})`,
-              boxShadow: `0 0 12px ${THEME.colors.accentCyan}`,
+              boxShadow: `0 0 16px ${THEME.colors.accentCyan}`,
             }}
           />
         </div>

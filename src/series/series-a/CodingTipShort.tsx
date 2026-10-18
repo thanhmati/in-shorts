@@ -1,182 +1,134 @@
 import React from "react";
 import {
   Audio,
-  spring,
+  interpolate,
+  Sequence,
   staticFile,
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import { AlertTriangle, CheckCircle2, Lightbulb } from "lucide-react";
 import { SafeLayout } from "../../core/SafeLayout";
 import { Branding } from "../../core/Branding";
-import { MacWindow } from "../../core/MacWindow";
-import { CodeBlock } from "../../core/CodeBlock";
 import { KineticCaptions } from "../../core/KineticCaptions";
+import { SuccessConfetti } from "../../core/graphics/SuccessConfetti";
 import { SeriesAShortProps } from "../../core/types";
-import { THEME } from "../../core/theme";
+import { Scene1Hook } from "./scenes/Scene1Hook";
+import { Scene2BadCode } from "./scenes/Scene2BadCode";
+import { Scene3MemoryExplainer } from "./scenes/Scene3MemoryExplainer";
+import { Scene4CleanCode } from "./scenes/Scene4CleanCode";
+import { Scene5Takeaway } from "./scenes/Scene5Takeaway";
 
 export const CodingTipShort: React.FC<SeriesAShortProps> = ({
-  topicTitle,
-  hookText,
   audioSrc,
   subtitles,
   scenes,
 }) => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+  const { durationInFrames } = useVideoConfig();
 
-  // Entrance spring for top title
-  const titleEntrance = spring({
-    frame,
-    fps,
-    config: { damping: 12, stiffness: 100 },
+  // Subtle continuous cinematic camera drift
+  const cameraScale = interpolate(frame, [0, durationInFrames || 1193], [1, 1.03], {
+    extrapolateRight: "clamp",
   });
-
-  // Calculate timing for Bad Code vs Good Code
-  const hookDuration = scenes.hookDurationFrames;
-  const isGoodCodePhase = frame >= hookDuration;
-
-  // Transition spring when switching from Bad Code to Good Code
-  const codeTransition = spring({
-    frame: frame - hookDuration,
-    fps,
-    config: { damping: 14, stiffness: 90 },
-  });
-
-  const activeScene = isGoodCodePhase ? scenes.goodCode : scenes.badCode;
-  const isBad = !isGoodCodePhase;
 
   return (
     <SafeLayout>
-      {/* Voiceover Audio */}
+      {/* 1. Voiceover Audio */}
       {audioSrc && <Audio src={staticFile(audioSrc)} />}
 
-      {/* Top Branding Bar */}
-      <Branding seriesName="REACT TIPS #01" channelName="@laptrinhfullstack" />
+      {/* 2. Procedural Sound Effects (SFX) Synchronized with Scene Transitions */}
+      {/* Beat 1 Hook Pop */}
+      <Sequence durationInFrames={15}>
+        <Audio src={staticFile("sfx/pop.wav")} volume={0.5} />
+      </Sequence>
 
-      {/* Main Hook & Title Header */}
-      <div
-        style={{
-          transform: `scale(${titleEntrance})`,
-          opacity: titleEntrance,
-          marginBottom: "32px",
-          textAlign: "center",
-        }}
-      >
-        <div
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "10px",
-            marginBottom: "12px",
-            color: isBad ? THEME.colors.accentRose : THEME.colors.accentEmerald,
-            fontWeight: 800,
-            fontSize: "24px",
-            textTransform: "uppercase",
-            letterSpacing: "0.06em",
-          }}
-        >
-          {isBad ? (
-            <>
-              <AlertTriangle size={28} />
-              <span>Cảnh báo hiệu năng</span>
-            </>
-          ) : (
-            <>
-              <CheckCircle2 size={28} />
-              <span>Giải pháp tối ưu</span>
-            </>
-          )}
-        </div>
+      {/* Beat 2 Bad Code Transition */}
+      <Sequence from={133} durationInFrames={20}>
+        <Audio src={staticFile("sfx/whoosh.wav")} volume={0.6} />
+      </Sequence>
 
-        <h1
-          style={{
-            margin: 0,
-            fontSize: "44px",
-            fontWeight: 900,
-            lineHeight: 1.25,
-            color: THEME.colors.textPrimary,
-            letterSpacing: "-0.02em",
-            textShadow: "0 4px 20px rgba(0,0,0,0.8)",
-          }}
-        >
-          {topicTitle}
-        </h1>
-      </div>
+      {/* Beat 3 Memory Explainer Transition */}
+      <Sequence from={373} durationInFrames={20}>
+        <Audio src={staticFile("sfx/whoosh.wav")} volume={0.6} />
+      </Sequence>
 
-      {/* Code Card Area */}
+      {/* Beat 4 Clean Code Revelation */}
+      <Sequence from={623} durationInFrames={20}>
+        <Audio src={staticFile("sfx/whoosh.wav")} volume={0.65} />
+      </Sequence>
+      <Sequence from={625} durationInFrames={35}>
+        <Audio src={staticFile("sfx/ding.wav")} volume={0.75} />
+      </Sequence>
+
+      {/* Beat 5 Takeaway Whoosh */}
+      <Sequence from={923} durationInFrames={20}>
+        <Audio src={staticFile("sfx/whoosh.wav")} volume={0.6} />
+      </Sequence>
+
+      {/* 3. Confetti Explosion on Clean Code */}
+      <SuccessConfetti triggerFrame={625} />
+
+      {/* 4. Film Stage Container with Camera Motion */}
       <div
         style={{
           flex: 1,
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
-          position: "relative",
-          perspective: "1000px",
+          transform: `scale(${cameraScale})`,
+          transformOrigin: "center center",
         }}
       >
-        <div
-          style={{
-            transform: isGoodCodePhase
-              ? `translateY(${(1 - codeTransition) * 30}px) scale(${0.96 + codeTransition * 0.04})`
-              : "none",
-            opacity: isGoodCodePhase ? codeTransition : 1,
-          }}
-        >
-          <MacWindow
-            filename={activeScene.title}
-            glow={isBad ? "bad" : "good"}
-            tag={activeScene.tag}
-          >
-            <CodeBlock
-              code={activeScene.code}
-              language={activeScene.language}
-              highlightLines={activeScene.highlightLines}
-              fontSize={24}
-            />
-          </MacWindow>
-        </div>
+        {/* Top Branding Bar with Audio Equalizer */}
+        <Branding seriesName="REACT TIPS #01" channelName="@laptrinhfullstack" />
 
-        {/* Takeaway / Explainer Banner */}
+        {/* Central Dynamic Stage (One Visual Beat at a Time) */}
         <div
           style={{
-            marginTop: "24px",
-            padding: "16px 20px",
-            borderRadius: "14px",
-            backgroundColor: isBad
-              ? "rgba(244, 63, 94, 0.1)"
-              : "rgba(16, 185, 129, 0.1)",
-            border: `1.5px solid ${
-              isBad ? "rgba(244, 63, 94, 0.3)" : "rgba(16, 185, 129, 0.3)"
-            }`,
+            flex: 1,
             display: "flex",
-            alignItems: "center",
-            gap: "14px",
+            flexDirection: "column",
+            position: "relative",
+            margin: "24px 0",
           }}
         >
-          <Lightbulb
-            size={28}
-            color={isBad ? THEME.colors.accentRose : THEME.colors.accentEmerald}
-            style={{ flexShrink: 0 }}
-          />
-          <span
-            style={{
-              fontSize: "22px",
-              fontWeight: 700,
-              color: THEME.colors.textPrimary,
-              lineHeight: 1.4,
-            }}
-          >
-            {isBad
-              ? hookText
-              : scenes.takeawayText}
-          </span>
-        </div>
-      </div>
+          {/* Beat 1: The Hook (0s - 4.5s) */}
+          <Sequence durationInFrames={135}>
+            <Scene1Hook />
+          </Sequence>
 
-      {/* Bottom Kinetic Captions Area */}
-      <div style={{ marginTop: "32px" }}>
-        <KineticCaptions words={subtitles.words} />
+          {/* Beat 2: Bad Code Close-up (4.5s - 12.5s) */}
+          <Sequence from={135} durationInFrames={240}>
+            <Scene2BadCode
+              code={scenes.badCode.code}
+              language={scenes.badCode.language}
+              highlightLines={scenes.badCode.highlightLines}
+            />
+          </Sequence>
+
+          {/* Beat 3: Under-the-Hood RAM Heap Explainer (12.5s - 20.8s) */}
+          <Sequence from={375} durationInFrames={250}>
+            <Scene3MemoryExplainer />
+          </Sequence>
+
+          {/* Beat 4: Clean Code & Fix Close-up (20.8s - 30.8s) */}
+          <Sequence from={625} durationInFrames={300}>
+            <Scene4CleanCode
+              code={scenes.goodCode.code}
+              language={scenes.goodCode.language}
+              highlightLines={scenes.goodCode.highlightLines}
+            />
+          </Sequence>
+
+          {/* Beat 5: Golden Rules & Call To Action (30.8s - 39.8s) */}
+          <Sequence from={925} durationInFrames={268}>
+            <Scene5Takeaway />
+          </Sequence>
+        </div>
+
+        {/* Bottom Kinetic Captions (Word-by-word synchronized) */}
+        <div style={{ marginBottom: "16px" }}>
+          <KineticCaptions words={subtitles.words} />
+        </div>
       </div>
     </SafeLayout>
   );

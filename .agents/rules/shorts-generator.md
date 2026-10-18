@@ -1,6 +1,18 @@
-# Agent Workflow: Quy trình Tạo Video YouTube Shorts (@laptrinhfullstack)
-
-> **MANDATORY DIRECTIVE**: Khi nhận bất kỳ yêu cầu nào liên quan đến việc tạo, sửa đổi hoặc cấu hình video Shorts, Agent **BẮT BUỘC PHẢI THAM CHIẾU** [PRD.md](file:///Users/thanhdo/Documents/Project/in-shorts/PRD.md) làm tài liệu căn cứ duy nhất (Single Source of Truth). Tuyệt đối không tự suy diễn cấu trúc thư mục, bảng màu, schema dữ liệu hay các quy chuẩn đã được định nghĩa trong PRD.
+> **MANDATORY DIRECTIVE (TƯ DUY ĐẠO DIỄN THỰC THỤ - DIRECTOR MINDSET)**:  
+> Khi tạo video Shorts, Agent **BẮT BUỘC PHẢI TƯ DUY NHƯ MỘT ĐẠO DIỄN ĐIỆN ẢNH**:
+> 1. **Phân cảnh Động theo Kịch bản (Script-Driven Storyboarding)**:
+>    * Tuyệt đối **KHÔNG CỐ ĐỊNH** số lượng scene (không dập khuôn mọi video phải có 3, 5 hay 6 scene).
+>    * Số lượng scene, visual và thời lượng phụ thuộc 100% vào các **nhịp ý niệm (Story Beats)** của kịch bản cụ thể. Mỗi khi kịch bản chuyển ý, đạo diễn **CẮT CẢNH (Cut Scene)** ngay lập tức.
+> 2. **Mỗi Phân Cảnh Chỉ Thể Hiện DUY NHẤT 1 Ý Niệm (One Idea at One Time)**:
+>    * Giọng đọc nói tới đâu, hình ảnh cận cảnh minh họa đúng trọng tâm điều đó.
+>    * Nghiêm cấm "Slide PowerPoint mindset": Tuyệt đối KHÔNG BAO GIỜ nhét tiêu đề, code lỗi, code đúng, sơ đồ bộ nhớ, bộ đếm render và phụ đề vào cùng 1 frame từ đầu đến cuối khiến chữ bị li ti và nghẹt thở!
+> 3. **Chuẩn kích thước font chữ trên màn hình di động (1080x1920)**:
+>    * Tiêu đề Hook / Chuyển ý: $\ge 56px - 66px$ (Font-weight 900+).
+>    * Khối Code trong MacWindow: $\ge 30px - 34px$ (Line-height 1.6, padding rộng). Tuyệt đối cấm code font 20-24px li ti!
+>    * Sơ đồ / Node / Box giải thích: $\ge 28px - 36px$.
+>    * Phụ đề Kinetic Captions: $\ge 38px - 44px$ ở đáy màn hình.
+> 4. **Mật độ không gian (Stage Breathing Room)**: Giữa thanh Branding (đỉnh) và Captions (đáy), không gian sân khấu trung tâm chỉ dành trọn cho DUY NHẤT 1 visual element lớn của phân cảnh đó.
+> 5. **Chuyển cảnh điện ảnh**: Mỗi scene được bọc trong `<Sequence>` theo frame timeline của audio, kết hợp âm thanh SFX (`whoosh.wav`, `ding.wav`, `pop.wav`) và camera punch nhẹ.
 
 ---
 

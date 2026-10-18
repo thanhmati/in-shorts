@@ -18,15 +18,30 @@
 
 ---
 
-## 2. Đặc tả Các Series Nội dung
+## 2. Tư duy Đạo diễn Điện ảnh (The Director Mindset)
 
-### 2.1. Series A — Coding tips trong 30–45 giây (Ưu tiên số 1)
-* **Cấu trúc 4 cảnh**:
-  1. **Scene 1 - The Hook (0s - 4s)**: Cảnh báo lỗi phổ biến, biểu tượng rung động, tiêu đề giật tút chỉ thẳng vấn đề.
-  2. **Scene 2 - Bad Code (4s - 15s)**: Khung MacOS viền đỏ, tag `BAD CODE ❌`, highlight dòng code gây memory leak / re-render / bug logic.
-  3. **Scene 3 - Clean Code Refactor (15s - 35s)**: Chuyển cảnh mượt mà sang khung MacOS viền xanh, tag `CLEAN CODE ✅`, giải thích giải pháp tối ưu (useMemo, useCallback, satisfies, Promise.allSettled,...).
-  4. **Scene 4 - Takeaway & CTA (35s - 42s)**: Hộp kết luận cốt lõi + kêu gọi follow kênh `@laptrinhfullstack`.
-* **Component Remotion**: `CodingTipShort` (`src/series/series-a/CodingTipShort.tsx`).
+> **QUY TẮC CỐT LÕI**: **Script-Driven Dynamic Storyboarding (Phân cảnh Động theo Kịch bản)**.  
+> Tuyệt đối **KHÔNG CỐ ĐỊNH** số lượng phân cảnh (không dập khuôn mọi video phải có 3, 5 hay 6 scene).  
+> **Số lượng scene, nội dung từng scene và thời lượng hoàn toàn do Kịch bản (Script) quyết định**.
+
+### Nguyên tắc Đạo diễn:
+1. **Phân tích nhịp kịch bản (Script Beat Analysis)**:
+   * Khi người nói chuyển sang một ý niệm mới (Hook, Vấn đề, Minh họa lỗi sai, Mổ xẻ nguyên nhân sâu xa, So sánh, Giải pháp, Benchmark, Bài học rút ra, Call-to-action...), đạo diễn **CẮT CẢNH (Cut / Change Scene)** ngay lập tức.
+   * Số lượng scene linh hoạt theo kịch bản: Có video chỉ cần 3 scenes (ngắn, súc tích), có video cần 4, 5 hoặc 6+ scenes (phức tạp, nhiều bước mổ xẻ).
+2. **One Beat = One Visual Focus (Không nhồi nhét)**:
+   * Mỗi scene chỉ thể hiện **DUY NHẤT một đối tượng thị giác trọng tâm** bổ trợ cho câu nói đó.
+   * Nếu đang nói về Code lỗi $\to$ Chỉ hiển thị Cận cảnh Cửa sổ Code lỗi cực to và rõ.
+   * Nếu đang nói về Bộ nhớ / Cơ chế ngầm $\to$ Cắt cảnh sang Sơ đồ Bộ nhớ / Đồ họa trực quan hóa, KHÔNG nhét chung với cửa sổ code!
+   * Nếu đang nói về Giải pháp $\to$ Cận cảnh Code giải pháp hoặc so sánh Trước/Sau.
+   * Tuyệt đối KHÔNG BAO GIỜ nhét toàn bộ thông tin vào 1 frame như slide thuyết trình PowerPoint!
+3. **Cỡ chữ & Không gian sân khấu (Stage Typography)**:
+   * Mọi text hiển thị trên mobile (1080x1920) phải có kích thước đủ lớn để đọc lướt trong 0.5s:
+     * Tiêu đề / Headline: $\ge 56px - 66px$.
+     * Code trong MacWindow: $\ge 30px - 34px$, line-height thoáng (1.6).
+     * Node / Sơ đồ / Chú thích: $\ge 28px - 36px$.
+     * Phụ đề Kinetic Captions: $\ge 38px - 44px$.
+4. **Chuyển cảnh điện ảnh (Cinematic Pacing)**:
+   * Chuyển cảnh dứt khoát khớp chính xác theo frame giọng nói trong subtitle JSON, kết hợp âm thanh SFX (whoosh, pop, ding) và camera punch nhẹ để giữ nhịp xem liên tục.
 
 ### 2.2. Series B — System design giải thích bằng animation
 * **Mục tiêu**: Trực quan hóa kiến trúc hệ thống bằng sơ đồ node SVG chuyển động (Request flow, Redis Caching, Message Queue Kafka, Load Balancer, JWT Auth).
@@ -58,10 +73,15 @@ in-shorts/
 │   │   ├── types.ts                    # TypeScript types chuẩn của toàn bộ dự án
 │   │   ├── theme.ts                    # Bảng màu Dark Modern, fonts, shadows
 │   │   ├── SafeLayout.tsx              # Khung 1080x1920 an toàn cho YouTube Shorts
-│   │   ├── Branding.tsx                # Badge nhận diện @laptrinhfullstack + Tag Series
+│   │   ├── Branding.tsx                # Badge nhận diện @laptrinhfullstack + Tag Series + AudioEqualizer
 │   │   ├── MacWindow.tsx               # Cửa sổ giả lập MacOS (3 nút traffic lights)
-│   │   ├── CodeBlock.tsx               # Prism Syntax Highlighter + Line Highlighting
-│   │   └── KineticCaptions.tsx         # Phụ đề nhảy từng từ với spring bounce & neon glow
+│   │   ├── CodeBlock.tsx               # Prism Syntax Highlighter + Animated Breathing Line Pulse
+│   │   ├── KineticCaptions.tsx         # Phụ đề nhảy từng từ với spring bounce & neon glow
+│   │   └── graphics/                   # Bộ Animation & Motion Graphics cao cấp
+│   │       ├── AmbientBackground.tsx   # Living canvas: 3 Glow Orbs trôi nổi, Dot Grid, Light Sweep
+│   │       ├── FloatingBadge.tsx       # Huy hiệu nổi 3D dao động góc nhìn (Perspective tilt)
+│   │       ├── AudioEqualizer.tsx      # Sóng âm thanh nhảy nhịp nhàng theo giọng nói
+│   │       └── SuccessConfetti.tsx     # Pháo hoa tia lửa (@remotion/shapes) bùng nổ khi sang Clean Code
 │   ├── series/
 │   │   ├── series-a/                   # Coding Tips
 │   │   │   ├── CodingTipShort.tsx      # Main Composition Series A
@@ -136,7 +156,16 @@ export type SeriesAShortProps = {
 
 ## 5. Quy chuẩn Thiết kế (Visual & Design Standards)
 
-1. **Kích thước & Safe Zone**:
+1. **RÀNG BUỘC TEXT COLOR TRONG DARK THEME (CRITICAL CONTRAST RULE)**:
+   * **Nghiêm cấm tuyệt đối**: Không bao giờ để bất kỳ token code, object key, chữ thường hoặc phụ đề hiển thị màu đen (`#000000`) hay màu xám tối trên nền dark `#111827`.
+   * **Bắt buộc**: Sử dụng `darkHighContrastTheme` (`src/core/syntaxTheme.ts`) cho CodeBlock:
+     * Plain text & Object keys (`theme:`, `role:`): `#F8FAFC` (Slate 50) hoặc `#38BDF8` (Sky Cyan).
+     * Strings (`"dark"`, `"admin"`): `#FDE047` (Yellow 300).
+     * Keywords (`function`, `const`, `return`): `#C084FC` (Purple 400).
+     * Hooks (`useMemo`, `useCallback`): `#38BDF8` / `#34D399` (Cyan / Emerald).
+     * Comments: `#94A3B8` (Slate 400 italic, độ tương phản luôn $\ge 4.5:1$).
+
+2. **Kích thước & Safe Zone**:
    * Canvas: $1080 \times 1920$ px.
    * `paddingTop`: $140px$ (tránh bị thanh tìm kiếm/tiêu đề YouTube che).
    * `paddingBottom`: $280px$ (tránh bị cụm nút Like/Comment/Share và tên âm thanh che).

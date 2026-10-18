@@ -3,17 +3,17 @@ import subtitles from "../../../../public/audio/series-a-react-rerender.json";
 
 export const reactRerenderEpisode: SeriesAShortProps = {
   id: "react-rerender-01",
-  topicTitle: "TRÁNH RE-RENDER TRONG REACT",
-  hookText: "Hàm & object inline tạo tham chiếu mới làm re-render toàn bộ!",
+  topicTitle: "TẠI SAO REACT RE-RENDER VÔ ÍCH?",
+  hookText: "Hàm & object inline tạo vùng nhớ mới (0x89C2 !== 0x1A4F) làm con re-render!",
   audioSrc: "audio/series-a-react-rerender.mp3",
   subtitles: subtitles as unknown as SubtitleData,
   scenes: {
-    hookDurationFrames: 360, // Switch to Good Code at frame 360 ("Hãy khắc phục ngay...")
+    hookDurationFrames: 630, // Switch to Clean Code at frame 633 ("Hãy khắc phục ngay...")
     badCode: {
       title: "BadParent.tsx",
       language: "tsx",
       code: `function UserProfile() {
-  // ❌ TẠO MỚI THAM CHIẾU MỖI KHI RENDER
+  // ❌ TẠO VÙNG NHỚ MỚI MỖI KHI RENDER
   return (
     <UserCard 
       config={{ theme: "dark", role: "admin" }}
@@ -35,14 +35,22 @@ export const reactRerenderEpisode: SeriesAShortProps = {
       title: "CleanParent.tsx",
       language: "tsx",
       code: `function UserProfile() {
-  // ✅ GIỮ NGUYÊN THAM CHIẾU VỚI USEMEMO / USECALLBACK
+  // ✅ CỐ ĐỊNH THAM CHIẾU VÙNG NHỚ
   const config = useMemo(
     () => ({ theme: "dark", role: "admin" }), 
     []
   );
-  const handleUpdate = useCallback(() => fetchUser(), []);
+  const handleUpdate = useCallback(
+    () => fetchUser(), 
+    []
+  );
 
-  return <UserCard config={config} onUpdate={handleUpdate} />;
+  return (
+    <UserCard 
+      config={config} 
+      onUpdate={handleUpdate} 
+    />
+  );
 }`,
       highlightLines: [
         { line: 2, type: "good" },
@@ -54,6 +62,6 @@ export const reactRerenderEpisode: SeriesAShortProps = {
         variant: "good",
       },
     },
-    takeawayText: "Dùng useMemo cho Object và useCallback cho Function khi truyền vào Component con!",
+    takeawayText: "Dùng useMemo cho Object, useCallback cho Hàm và bọc con bằng React.memo!",
   },
 };

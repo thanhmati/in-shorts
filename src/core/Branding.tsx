@@ -2,6 +2,7 @@ import React from "react";
 import { spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { Code2, Sparkles } from "lucide-react";
 import { THEME } from "./theme";
+import { AudioEqualizer } from "./graphics/AudioEqualizer";
 
 interface BrandingProps {
   seriesName?: string;
@@ -31,7 +32,7 @@ export const Branding: React.FC<BrandingProps> = ({
         alignItems: "center",
         justifyContent: "space-between",
         width: "100%",
-        marginBottom: "36px",
+        marginBottom: "32px",
         transform: `translateY(${(1 - entrance) * -30}px)`,
         opacity: entrance,
       }}
@@ -44,16 +45,16 @@ export const Branding: React.FC<BrandingProps> = ({
           gap: "10px",
           backgroundColor: "rgba(56, 189, 248, 0.12)",
           border: `1.5px solid rgba(56, 189, 248, 0.35)`,
-          padding: "10px 20px",
+          padding: "8px 18px",
           borderRadius: "999px",
         }}
       >
-        <Sparkles size={22} color={THEME.colors.accentCyan} />
+        <Sparkles size={20} color={THEME.colors.accentCyan} />
         <span
           style={{
             color: THEME.colors.accentCyan,
             fontWeight: 800,
-            fontSize: "22px",
+            fontSize: "20px",
             letterSpacing: "0.08em",
             textTransform: "uppercase",
           }}
@@ -61,6 +62,9 @@ export const Branding: React.FC<BrandingProps> = ({
           {seriesName}
         </span>
       </div>
+
+      {/* Dynamic Sound Equalizer */}
+      <AudioEqualizer isSpeaking={true} barCount={12} color={THEME.colors.accentCyan} />
 
       {/* Channel Name */}
       <div
@@ -70,16 +74,16 @@ export const Branding: React.FC<BrandingProps> = ({
           gap: "10px",
           backgroundColor: "rgba(255, 255, 255, 0.05)",
           border: "1px solid rgba(255, 255, 255, 0.1)",
-          padding: "10px 22px",
+          padding: "8px 20px",
           borderRadius: "999px",
         }}
       >
-        <Code2 size={22} color={THEME.colors.accentEmerald} />
+        <Code2 size={20} color={THEME.colors.accentEmerald} />
         <span
           style={{
             color: THEME.colors.textPrimary,
             fontWeight: 700,
-            fontSize: "22px",
+            fontSize: "20px",
             letterSpacing: "0.02em",
           }}
         >
