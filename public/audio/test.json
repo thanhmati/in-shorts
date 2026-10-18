@@ -1,0 +1,136 @@
+{
+  "text": "3 lỗi phổ biến khiến React re-render không cần thiết và cách khắc phục cực kỳ đơn giản.",
+  "voice": "vi-VN-NamMinhNeural",
+  "rate": "+10%",
+  "fps": 30,
+  "durationInFrames": 169,
+  "durationInSeconds": 5.63,
+  "words": [
+    {
+      "word": "3",
+      "startSec": 0.1,
+      "endSec": 0.339,
+      "startFrame": 3,
+      "endFrame": 10
+    },
+    {
+      "word": "lỗi",
+      "startSec": 0.339,
+      "endSec": 0.543,
+      "startFrame": 10,
+      "endFrame": 16
+    },
+    {
+      "word": "phổ",
+      "startSec": 0.543,
+      "endSec": 0.714,
+      "startFrame": 16,
+      "endFrame": 21
+    },
+    {
+      "word": "biến",
+      "startSec": 0.714,
+      "endSec": 0.93,
+      "startFrame": 21,
+      "endFrame": 28
+    },
+    {
+      "word": "khiến",
+      "startSec": 0.93,
+      "endSec": 1.168,
+      "startFrame": 28,
+      "endFrame": 35
+    },
+    {
+      "word": "React",
+      "startSec": 1.168,
+      "endSec": 1.339,
+      "startFrame": 35,
+      "endFrame": 40
+    },
+    {
+      "word": "re-render",
+      "startSec": 1.339,
+      "endSec": 1.941,
+      "startFrame": 40,
+      "endFrame": 58
+    },
+    {
+      "word": "không",
+      "startSec": 1.941,
+      "endSec": 2.168,
+      "startFrame": 58,
+      "endFrame": 65
+    },
+    {
+      "word": "cần",
+      "startSec": 2.168,
+      "endSec": 2.35,
+      "startFrame": 65,
+      "endFrame": 70
+    },
+    {
+      "word": "thiết",
+      "startSec": 2.35,
+      "endSec": 2.566,
+      "startFrame": 70,
+      "endFrame": 77
+    },
+    {
+      "word": "và",
+      "startSec": 2.566,
+      "endSec": 2.725,
+      "startFrame": 77,
+      "endFrame": 82
+    },
+    {
+      "word": "cách",
+      "startSec": 2.725,
+      "endSec": 2.873,
+      "startFrame": 82,
+      "endFrame": 86
+    },
+    {
+      "word": "khắc",
+      "startSec": 2.873,
+      "endSec": 3.02,
+      "startFrame": 86,
+      "endFrame": 91
+    },
+    {
+      "word": "phục",
+      "startSec": 3.02,
+      "endSec": 3.214,
+      "startFrame": 91,
+      "endFrame": 96
+    },
+    {
+      "word": "cực",
+      "startSec": 3.214,
+      "endSec": 3.373,
+      "startFrame": 96,
+      "endFrame": 101
+    },
+    {
+      "word": "kỳ",
+      "startSec": 3.373,
+      "endSec": 3.566,
+      "startFrame": 101,
+      "endFrame": 107
+    },
+    {
+      "word": "đơn",
+      "startSec": 3.566,
+      "endSec": 3.748,
+      "startFrame": 107,
+      "endFrame": 112
+    },
+    {
+      "word": "giản",
+      "startSec": 3.748,
+      "endSec": 4.145,
+      "startFrame": 112,
+      "endFrame": 124
+    }
+  ]
+}

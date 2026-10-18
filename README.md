@@ -1,54 +1,46 @@
-# Remotion video
+# in-shorts: Tự động hóa sản xuất YouTube Shorts với Remotion & Antigravity
 
-<p align="center">
-  <a href="https://github.com/remotion-dev/logo">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-dark.apng">
-      <img alt="Animated Remotion Logo" src="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-light.gif">
-    </picture>
-  </a>
-</p>
+Dự án tự động hóa sản xuất video ngắn lập trình (YouTube Shorts 1080x1920) cho kênh **[@laptrinhfullstack](https://www.youtube.com/@laptrinhfullstack)**.
 
-Welcome to your Remotion project!
+---
 
-## Commands
+## 🚀 Các Series Nội dung
 
-**Install Dependencies**
+1. **Series A — Coding Tips (30–45s)**: Hook $\to$ Bad Code $\to$ Clean Code Refactoring $\to$ Takeaway.
+2. **Series B — System Design Animation**: Sơ đồ luồng dữ liệu, Microservices, Redis, Kafka, Load Balancer.
+3. **Series C — Developer Tools & Workflow**: Terminal commands, Docker container vs image, Git rebase vs merge.
 
-```console
-npm i --loglevel=error
-```
+---
 
-**Start Preview**
+## 🛠️ Quy trình Tạo Video Tự Động
 
-```console
+### Bước 1: Yêu cầu Antigravity Agent
+Chỉ cần chat với Antigravity trong IDE:
+> *"Tạo short Series A về chủ đề: TypeScript satisfies dùng để làm gì?"*
+
+Antigravity sẽ:
+1. Soạn kịch bản tối ưu chuyển đổi và code demo.
+2. Tự gọi `scripts/generate_tts.py` để sinh file âm thanh tiếng Việt và phụ đề từng từ (Word-level timestamps).
+3. Đăng ký tập mới vào Remotion và tự động căn chỉnh frame chuyển đổi.
+
+### Bước 2: Xem trước (Preview)
+Khởi động Remotion Studio:
+```bash
 npm run dev
 ```
+Mở trình duyệt: [http://localhost:3000](http://localhost:3000)
 
-**Render video**
-
-```console
-npx remotion render
+### Bước 3: Xuất video (Render)
+Khi đã ưng ý:
+```bash
+npx remotion render ReactRerender out/react-rerender.mp4
 ```
 
-**Upgrade Remotion**
+---
 
-```console
-npx remotion upgrade
-```
+## 📂 Cấu trúc Dự án
 
-## Docs
-
-Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
-
-## Help
-
-We provide help on our [Discord server](https://discord.gg/6VzzNDwUwV).
-
-## Issues
-
-Found an issue with Remotion? [File an issue here](https://github.com/remotion-dev/remotion/issues/new).
-
-## License
-
-Note that for some entities a company license is needed. [Read the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
+- `src/core/`: Bộ UI components dùng chung (SafeLayout 9:16, Branding, MacWindow, CodeBlock Prism, KineticCaptions).
+- `src/series/series-a/`: Template và dữ liệu các tập Series A.
+- `scripts/generate_tts.py`: Script Edge-TTS tiếng Việt tự động tạo audio và subtitle timestamp microsecond.
+- `.agents/rules/shorts-generator.md`: Bộ quy tắc agent rules để Antigravity tự động hóa sản xuất.

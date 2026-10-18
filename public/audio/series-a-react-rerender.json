@@ -1,0 +1,531 @@
+{
+  "text": "Dừng lại nếu bạn vẫn đang truyền object hoặc hàm inline như thế này trong React! Mỗi lần component cha re-render, một tham chiếu mới sẽ được tạo ra, khiến component con bị re-render vô ích dù dữ liệu không đổi. Hãy khắc phục ngay bằng cách dùng useMemo cho object và useCallback cho function. Follow Lập trình Fullstack để lên trình mỗi ngày nhé!",
+  "spokenText": "Dừng lại nếu bạn vẫn đang truyền ọp-chếch hoặc hàm in-lai như thế này trong Ri-ét! Mỗi lần com-pâu-nần cha ri-ren-đơ, một tham chiếu mới sẽ được tạo ra, khiến com-pâu-nần con bị ri-ren-đơ vô ích dù dữ liệu không đổi. Hãy khắc phục ngay bằng cách dùng diu-mê-mô cho ọp-chếch và diu-con-bách cho phăng-sừn. Follow Lập trình phun-xờ-tách để lên trình mỗi ngày nhé!",
+  "voice": "vi-VN-NamMinhNeural",
+  "rate": "+10%",
+  "fps": 30,
+  "durationInFrames": 625,
+  "durationInSeconds": 20.83,
+  "words": [
+    {
+      "word": "Dừng",
+      "spoken": "Dừng",
+      "startSec": 0.1,
+      "endSec": 0.361,
+      "startFrame": 3,
+      "endFrame": 11
+    },
+    {
+      "word": "lại",
+      "spoken": "lại",
+      "startSec": 0.361,
+      "endSec": 0.543,
+      "startFrame": 11,
+      "endFrame": 16
+    },
+    {
+      "word": "nếu",
+      "spoken": "nếu",
+      "startSec": 0.543,
+      "endSec": 0.691,
+      "startFrame": 16,
+      "endFrame": 21
+    },
+    {
+      "word": "bạn",
+      "spoken": "bạn",
+      "startSec": 0.691,
+      "endSec": 0.895,
+      "startFrame": 21,
+      "endFrame": 27
+    },
+    {
+      "word": "vẫn",
+      "spoken": "vẫn",
+      "startSec": 0.895,
+      "endSec": 1.043,
+      "startFrame": 27,
+      "endFrame": 31
+    },
+    {
+      "word": "đang",
+      "spoken": "đang",
+      "startSec": 1.043,
+      "endSec": 1.214,
+      "startFrame": 31,
+      "endFrame": 36
+    },
+    {
+      "word": "truyền",
+      "spoken": "truyền",
+      "startSec": 1.214,
+      "endSec": 1.452,
+      "startFrame": 36,
+      "endFrame": 44
+    },
+    {
+      "word": "object",
+      "spoken": "ọp-chếch",
+      "startSec": 1.452,
+      "endSec": 1.816,
+      "startFrame": 44,
+      "endFrame": 54
+    },
+    {
+      "word": "hoặc",
+      "spoken": "hoặc",
+      "startSec": 1.816,
+      "endSec": 2.02,
+      "startFrame": 54,
+      "endFrame": 61
+    },
+    {
+      "word": "hàm",
+      "spoken": "hàm",
+      "startSec": 2.02,
+      "endSec": 2.27,
+      "startFrame": 61,
+      "endFrame": 68
+    },
+    {
+      "word": "inline",
+      "spoken": "in-lai",
+      "startSec": 2.27,
+      "endSec": 2.657,
+      "startFrame": 68,
+      "endFrame": 80
+    },
+    {
+      "word": "như",
+      "spoken": "như",
+      "startSec": 2.657,
+      "endSec": 2.827,
+      "startFrame": 80,
+      "endFrame": 85
+    },
+    {
+      "word": "thế",
+      "spoken": "thế",
+      "startSec": 2.827,
+      "endSec": 2.941,
+      "startFrame": 85,
+      "endFrame": 88
+    },
+    {
+      "word": "này",
+      "spoken": "này",
+      "startSec": 2.941,
+      "endSec": 3.123,
+      "startFrame": 88,
+      "endFrame": 94
+    },
+    {
+      "word": "trong",
+      "spoken": "trong",
+      "startSec": 3.123,
+      "endSec": 3.327,
+      "startFrame": 94,
+      "endFrame": 100
+    },
+    {
+      "word": "React!",
+      "spoken": "Ri-ét",
+      "startSec": 3.327,
+      "endSec": 3.691,
+      "startFrame": 100,
+      "endFrame": 111
+    },
+    {
+      "word": "Mỗi",
+      "spoken": "Mỗi",
+      "startSec": 4.448,
+      "endSec": 4.777,
+      "startFrame": 133,
+      "endFrame": 143
+    },
+    {
+      "word": "lần",
+      "spoken": "lần",
+      "startSec": 4.777,
+      "endSec": 4.993,
+      "startFrame": 143,
+      "endFrame": 150
+    },
+    {
+      "word": "component",
+      "spoken": "com-pâu-nần",
+      "startSec": 4.993,
+      "endSec": 5.539,
+      "startFrame": 150,
+      "endFrame": 166
+    },
+    {
+      "word": "cha",
+      "spoken": "cha",
+      "startSec": 5.539,
+      "endSec": 5.732,
+      "startFrame": 166,
+      "endFrame": 172
+    },
+    {
+      "word": "re-render,",
+      "spoken": "ri-ren-đơ",
+      "startSec": 5.732,
+      "endSec": 6.311,
+      "startFrame": 172,
+      "endFrame": 189
+    },
+    {
+      "word": "một",
+      "spoken": "một",
+      "startSec": 6.459,
+      "endSec": 6.641,
+      "startFrame": 194,
+      "endFrame": 199
+    },
+    {
+      "word": "tham",
+      "spoken": "tham",
+      "startSec": 6.641,
+      "endSec": 6.834,
+      "startFrame": 199,
+      "endFrame": 205
+    },
+    {
+      "word": "chiếu",
+      "spoken": "chiếu",
+      "startSec": 6.834,
+      "endSec": 7.027,
+      "startFrame": 205,
+      "endFrame": 211
+    },
+    {
+      "word": "mới",
+      "spoken": "mới",
+      "startSec": 7.027,
+      "endSec": 7.243,
+      "startFrame": 211,
+      "endFrame": 217
+    },
+    {
+      "word": "sẽ",
+      "spoken": "sẽ",
+      "startSec": 7.243,
+      "endSec": 7.368,
+      "startFrame": 217,
+      "endFrame": 221
+    },
+    {
+      "word": "được",
+      "spoken": "được",
+      "startSec": 7.368,
+      "endSec": 7.527,
+      "startFrame": 221,
+      "endFrame": 226
+    },
+    {
+      "word": "tạo",
+      "spoken": "tạo",
+      "startSec": 7.527,
+      "endSec": 7.732,
+      "startFrame": 226,
+      "endFrame": 232
+    },
+    {
+      "word": "ra,",
+      "spoken": "ra",
+      "startSec": 7.732,
+      "endSec": 8.005,
+      "startFrame": 232,
+      "endFrame": 240
+    },
+    {
+      "word": "khiến",
+      "spoken": "khiến",
+      "startSec": 8.152,
+      "endSec": 8.391,
+      "startFrame": 245,
+      "endFrame": 252
+    },
+    {
+      "word": "component",
+      "spoken": "com-pâu-nần",
+      "startSec": 8.391,
+      "endSec": 8.925,
+      "startFrame": 252,
+      "endFrame": 268
+    },
+    {
+      "word": "con",
+      "spoken": "con",
+      "startSec": 8.925,
+      "endSec": 9.107,
+      "startFrame": 268,
+      "endFrame": 273
+    },
+    {
+      "word": "bị",
+      "spoken": "bị",
+      "startSec": 9.107,
+      "endSec": 9.243,
+      "startFrame": 273,
+      "endFrame": 277
+    },
+    {
+      "word": "re-render",
+      "spoken": "ri-ren-đơ",
+      "startSec": 9.243,
+      "endSec": 9.743,
+      "startFrame": 277,
+      "endFrame": 292
+    },
+    {
+      "word": "vô",
+      "spoken": "vô",
+      "startSec": 9.743,
+      "endSec": 9.914,
+      "startFrame": 292,
+      "endFrame": 297
+    },
+    {
+      "word": "ích",
+      "spoken": "ích",
+      "startSec": 9.914,
+      "endSec": 10.095,
+      "startFrame": 297,
+      "endFrame": 303
+    },
+    {
+      "word": "dù",
+      "spoken": "dù",
+      "startSec": 10.095,
+      "endSec": 10.311,
+      "startFrame": 303,
+      "endFrame": 309
+    },
+    {
+      "word": "dữ",
+      "spoken": "dữ",
+      "startSec": 10.311,
+      "endSec": 10.482,
+      "startFrame": 309,
+      "endFrame": 314
+    },
+    {
+      "word": "liệu",
+      "spoken": "liệu",
+      "startSec": 10.482,
+      "endSec": 10.686,
+      "startFrame": 314,
+      "endFrame": 321
+    },
+    {
+      "word": "không",
+      "spoken": "không",
+      "startSec": 10.686,
+      "endSec": 10.902,
+      "startFrame": 321,
+      "endFrame": 327
+    },
+    {
+      "word": "đổi.",
+      "spoken": "đổi",
+      "startSec": 10.902,
+      "endSec": 11.243,
+      "startFrame": 327,
+      "endFrame": 337
+    },
+    {
+      "word": "Hãy",
+      "spoken": "Hãy",
+      "startSec": 12.005,
+      "endSec": 12.175,
+      "startFrame": 360,
+      "endFrame": 365
+    },
+    {
+      "word": "khắc",
+      "spoken": "khắc",
+      "startSec": 12.175,
+      "endSec": 12.334,
+      "startFrame": 365,
+      "endFrame": 370
+    },
+    {
+      "word": "phục",
+      "spoken": "phục",
+      "startSec": 12.334,
+      "endSec": 12.55,
+      "startFrame": 370,
+      "endFrame": 376
+    },
+    {
+      "word": "ngay",
+      "spoken": "ngay",
+      "startSec": 12.55,
+      "endSec": 12.709,
+      "startFrame": 376,
+      "endFrame": 381
+    },
+    {
+      "word": "bằng",
+      "spoken": "bằng",
+      "startSec": 12.709,
+      "endSec": 12.891,
+      "startFrame": 381,
+      "endFrame": 387
+    },
+    {
+      "word": "cách",
+      "spoken": "cách",
+      "startSec": 12.891,
+      "endSec": 13.073,
+      "startFrame": 387,
+      "endFrame": 392
+    },
+    {
+      "word": "dùng",
+      "spoken": "dùng",
+      "startSec": 13.073,
+      "endSec": 13.311,
+      "startFrame": 392,
+      "endFrame": 399
+    },
+    {
+      "word": "useMemo",
+      "spoken": "diu-mê-mô",
+      "startSec": 13.311,
+      "endSec": 13.811,
+      "startFrame": 399,
+      "endFrame": 414
+    },
+    {
+      "word": "cho",
+      "spoken": "cho",
+      "startSec": 13.811,
+      "endSec": 13.982,
+      "startFrame": 414,
+      "endFrame": 419
+    },
+    {
+      "word": "object",
+      "spoken": "ọp-chếch",
+      "startSec": 13.982,
+      "endSec": 14.482,
+      "startFrame": 419,
+      "endFrame": 434
+    },
+    {
+      "word": "và",
+      "spoken": "và",
+      "startSec": 14.482,
+      "endSec": 14.675,
+      "startFrame": 434,
+      "endFrame": 440
+    },
+    {
+      "word": "useCallback",
+      "spoken": "diu-con-bách",
+      "startSec": 14.675,
+      "endSec": 15.289,
+      "startFrame": 440,
+      "endFrame": 459
+    },
+    {
+      "word": "cho",
+      "spoken": "cho",
+      "startSec": 15.289,
+      "endSec": 15.414,
+      "startFrame": 459,
+      "endFrame": 462
+    },
+    {
+      "word": "function.",
+      "spoken": "phăng-sừn",
+      "startSec": 15.414,
+      "endSec": 15.857,
+      "startFrame": 462,
+      "endFrame": 476
+    },
+    {
+      "word": "Follow",
+      "spoken": "Follow",
+      "startSec": 16.618,
+      "endSec": 17.061,
+      "startFrame": 499,
+      "endFrame": 512
+    },
+    {
+      "word": "Lập",
+      "spoken": "Lập",
+      "startSec": 17.061,
+      "endSec": 17.243,
+      "startFrame": 512,
+      "endFrame": 517
+    },
+    {
+      "word": "trình",
+      "spoken": "trình",
+      "startSec": 17.243,
+      "endSec": 17.448,
+      "startFrame": 517,
+      "endFrame": 523
+    },
+    {
+      "word": "Fullstack",
+      "spoken": "phun-xờ-tách",
+      "startSec": 17.448,
+      "endSec": 18.107,
+      "startFrame": 523,
+      "endFrame": 543
+    },
+    {
+      "word": "để",
+      "spoken": "để",
+      "startSec": 18.107,
+      "endSec": 18.289,
+      "startFrame": 543,
+      "endFrame": 549
+    },
+    {
+      "word": "lên",
+      "spoken": "lên",
+      "startSec": 18.289,
+      "endSec": 18.493,
+      "startFrame": 549,
+      "endFrame": 555
+    },
+    {
+      "word": "trình",
+      "spoken": "trình",
+      "startSec": 18.493,
+      "endSec": 18.698,
+      "startFrame": 555,
+      "endFrame": 561
+    },
+    {
+      "word": "mỗi",
+      "spoken": "mỗi",
+      "startSec": 18.698,
+      "endSec": 18.868,
+      "startFrame": 561,
+      "endFrame": 566
+    },
+    {
+      "word": "ngày",
+      "spoken": "ngày",
+      "startSec": 18.868,
+      "endSec": 19.061,
+      "startFrame": 566,
+      "endFrame": 572
+    },
+    {
+      "word": "nhé!",
+      "spoken": "nhé",
+      "startSec": 19.061,
+      "endSec": 19.334,
+      "startFrame": 572,
+      "endFrame": 580
+    }
+  ]
+}
