@@ -205,3 +205,37 @@ export type SeriesAShortProps = {
    * **Lớp Subtitle & Visual**: Khôi phục 100% từ tiếng Anh gốc để trên video hiển thị code chuẩn xác.
 3. **Outro Buffer**:
    * Script TTS tự động cộng thêm $1.5$ giây ($45$ frames) ở cuối audio để tránh kết thúc đột ngột và tạo khoảng đệm mượt mà.
+
+---
+
+## 7. Quy chuẩn Đóng gói Đa nền tảng (Thumbnail & Multi-Platform SEO)
+
+Mọi video được sinh ra bắt buộc phải đi kèm **Bộ Thumbnail đồ họa cao cấp** và **Nội dung SEO chuẩn tối ưu thuật toán** cho cả 3 nền tảng: YouTube Shorts, TikTok và Facebook Reels.
+
+### 7.1. Video Thumbnail 9:16 (High CTR Cover)
+* **Component Remotion**: [src/core/VideoThumbnail.tsx](file:///Users/thanhdo/Documents/Project/in-shorts/src/core/VideoThumbnail.tsx)
+* **Đăng ký Remotion `<Still>`**: Tự động cấu hình trong [src/Root.tsx](file:///Users/thanhdo/Documents/Project/in-shorts/src/Root.tsx) với id: `<CompositionId>-Thumbnail`.
+* **Kích thước**: $1080 \times 1920$ px (tỷ lệ 9:16 chuẩn Shorts / Reels / TikTok).
+* **Quy chuẩn thị giác (Visual High CTR)**:
+  * Khung viền Neon phát sáng quanh viền ngoài để làm nổi bật video trên Feed tối/sáng của người dùng.
+  * Tiêu đề Hook khổng lồ (size 72px – 76px) kết hợp màu tương phản cực mạnh (Vàng neon `#FBBF24` hoặc Đỏ `#F43F5E` trên nền Trắng `#FFFFFF`).
+  * Badge cảnh báo mức độ nghiêm trọng hoặc danh mục Series.
+  * Cửa sổ MacWindow chứa code lỗi hoặc sơ đồ ấn tượng.
+  * Nút Call-To-Action bắt mắt: *"BẤM XEM ĐỂ FIX NGAY! 🚀"*.
+* **Lệnh render tự động**:
+  ```bash
+  npx remotion still <CompositionId>-Thumbnail out/<slug>-thumbnail.png
+  ```
+
+### 7.2. Tiêu chuẩn SEO Nội dung (Multi-Platform Copywriting)
+* **YouTube Shorts**:
+  * Tiêu đề: Dưới 70 ký tự, chứa từ khóa chính + hook tò mò, kết thúc bằng `#shorts`.
+  * Mô tả: Tóm tắt 2-3 câu đánh trúng pain-point, giải thích giải pháp, lời kêu gọi đăng ký kênh `@laptrinhfullstack`.
+  * Hashtags trong mô tả: 5–8 thẻ liên quan (vd: `#Shorts #ReactJS #LapTrinh #Frontend #JavaScript #WebDevelopment #LapTrinhFullstack`).
+  * Video Tags (YouTube Studio): Dải từ khóa tìm kiếm phân cách bằng dấu phẩy theo đúng định dạng `tag1, tag2, tag3` (vd: `react re-render, tối ưu react, usememo, usecallback, laptrinhfullstack`) để dán trực tiếp vào trường Tags của YouTube Studio.
+* **TikTok**:
+  * Caption: Dưới 150 ký tự, ngắn gọn, giàu năng lượng.
+  * Hashtags: Kết hợp hashtag ngách và hashtag xu hướng (vd: `#laptrinh #laptrinhvien #reactjs #coding #developer #learnontiktok #laptrinhfullstack`).
+* **Facebook Reels**:
+  * Caption: Bắt đầu bằng câu hỏi gợi mở thảo luận, tóm tắt 3 gạch đầu dòng ngắn gọn bài học rút ra, hashtag công nghệ.
+* **File lưu trữ & bàn giao**: Toàn bộ nội dung SEO copywriting được quản lý độc lập dưới dạng file Markdown tại `src/series/<series-id>/data/<slug>.seo.md` và `out/<slug>-seo.md` (tuyệt đối không nhét vào file code `.ts` để tránh làm rối cấu hình Remotion), sẵn sàng cho người dùng copy-paste xuất bản ngay lập tức.

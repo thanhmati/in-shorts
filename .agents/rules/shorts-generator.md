@@ -16,7 +16,7 @@
 
 ---
 
-## WORKFLOW: 6 BƯỚC THỰC THI KHI NHẬN YÊU CẦU TẠO VIDEO MỚI
+## WORKFLOW: 7 BƯỚC THỰC THI KHI NHẬN YÊU CẦU TẠO VIDEO MỚI
 
 Khi người dùng gửi yêu cầu (Ví dụ: *"Tạo short Series A về: JavaScript == vs ==="* hoặc *"Tạo video short về: Docker container vs image"*):
 
@@ -46,21 +46,40 @@ Agent phải tự động soạn kịch bản tiếng Việt tuân thủ nghiêm
    ```
 3. Script tự động phiên âm cho giọng đọc (vd: `diu-con-bách`, `Ri-ét`) nhưng bảo lưu chữ tiếng Anh gốc trên phụ đề (`useCallback`, `React`).
 
-### Bước 4: Tính toán Frame & Tạo File Dữ liệu (Data Contract)
+### Bước 4: Tính toán Frame & Tạo File Cấu hình (Data Contract)
 1. Đọc file `public/audio/<slug>.json` vừa tạo:
-   * Tìm từ chuyển cảnh (ví dụ từ: *"Hãy"*, *"Cách"*, *"Giải"*) để lấy chính xác giá trị `startFrame` của từ đó.
-   * Gán giá trị này vào trường `hookDurationFrames` của scene (để đảm bảo giao diện chuyển từ Bad Code sang Good Code chính xác từng frame khớp với giọng đọc).
+   * Phân tích các nhịp ý niệm (Story Beats) để cắt cảnh theo thời lượng audio.
    * Lấy tổng số frame từ `durationInFrames`.
 2. Tạo file cấu hình tại `src/series/<series-id>/data/<slug>.ts` theo đúng interface trong PRD.
+   * *Lưu ý*: File `.ts` chỉ chứa dữ liệu cần thiết cho Remotion render (`scenes`, `subtitles`, `thumbnail`). **Tuyệt đối KHÔNG nhét nội dung copywriting SEO vào file `.ts`** để giữ cấu hình code tinh gọn.
 
-### Bước 5: Đăng ký Composition vào Root.tsx
+### Bước 5: Đăng ký Composition & Thumbnail Still vào Root.tsx
 1. Cập nhật [src/Root.tsx](file:///Users/thanhdo/Documents/Project/in-shorts/src/Root.tsx):
-   * Thêm `<Composition>` mới với id định danh.
-   * Cấu hình độ phân giải `width: 1080`, `height: 1920`, `fps: 30`.
-   * Gán `durationInFrames` bằng đúng thời lượng từ file subtitle JSON.
-   * Gán `defaultProps` từ file data vừa tạo ở Bước 4.
+   * Thêm `<Composition>` mới với id định danh video (`width: 1080`, `height: 1920`, `fps: 30`).
+   * Thêm `<Still>` cho ảnh bìa:
+     ```tsx
+     <Still
+       id="<CompositionId>-Thumbnail"
+       component={VideoThumbnail}
+       width={1080}
+       height={1920}
+       defaultProps={episodeData.thumbnail}
+     />
+     ```
 
-### Bước 6: Kiểm tra Chất lượng (Quality Gate) & Báo cáo
+### Bước 6: Đóng gói Thumbnail & Xuất File Markdown SEO Đa Nền Tảng
+1. **Render Thumbnail Tự động**:
+   ```bash
+   npx remotion still <CompositionId>-Thumbnail out/<slug>-thumbnail.png
+   ```
+2. **Xuất file Markdown SEO Đa Nền Tảng**:
+   Tạo file Markdown tại `src/series/<series-id>/data/<slug>.seo.md` (đồng thời xuất ra `out/<slug>-seo.md`) chứa đầy đủ nội dung tối ưu sẵn sàng copy-paste:
+   * **YouTube Shorts**: Tiêu đề giật gân < 70 ký tự (#shorts), mô tả đánh trúng pain-point, hashtags mô tả và **Video Tags chuẩn định dạng `tag1, tag2, tag3`** để copy paste thẳng vào mục Tags của YouTube Studio.
+   * **TikTok**: Caption súc tích < 150 ký tự, bộ hashtag xu hướng + ngách.
+   * **Facebook Reels**: Câu hỏi tương tác mở đầu, 3 gạch đầu dòng tóm tắt bài học, hashtag công nghệ.
+   * **Đường dẫn Thumbnail**: Chỉ rõ file ảnh bìa `out/<slug>-thumbnail.png`.
+
+### Bước 7: Kiểm tra Chất lượng (Quality Gate) & Báo cáo
 1. **Chạy Quality Check**:
    ```bash
    npm run lint
@@ -69,5 +88,6 @@ Agent phải tự động soạn kịch bản tiếng Việt tuân thủ nghiêm
 2. **Báo cáo Người dùng**:
    * Thông báo video đã sẵn sàng xem trước trên Remotion Studio:
      `http://localhost:3000/<CompositionId>`
-   * Tóm tắt ngắn gọn: Thời lượng, câu Hook, dòng code so sánh.
-   * **Quy tắc render**: Chỉ chạy lệnh xuất file MP4 (`npx remotion render <CompositionId> out/<slug>.mp4`) khi người dùng ra lệnh yêu cầu render hoặc xuất video.
+   * Bàn giao link file Thumbnail: `out/<slug>-thumbnail.png`.
+   * Bàn giao file SEO: `out/<slug>-seo.md`.
+   * **Quy tắc render video**: Chỉ chạy lệnh xuất file MP4 (`npx remotion render <CompositionId> out/<slug>.mp4`) khi người dùng ra lệnh yêu cầu render hoặc xuất video.

@@ -64,4 +64,20 @@ export const reactRerenderEpisode: SeriesAShortProps = {
     },
     takeawayText: "Dùng useMemo cho Object, useCallback cho Hàm và bọc con bằng React.memo!",
   },
+  thumbnail: {
+    badgeText: "CẢNH BÁO HIỆU NĂNG REACT",
+    headlineMain: "TẠI SAO REACT",
+    headlineHighlight: "RE-RENDER VÔ ÍCH? ❌",
+    subText: "90% Lập trình viên vô tình mắc lỗi này!",
+    codeSnippet: {
+      filename: "BadParent.tsx",
+      language: "tsx",
+      code: `// ❌ TẠO Ô NHỚ MỚI MỖI KHI RENDER
+<UserCard 
+  config={{ role: "admin" }} 
+  onUpdate={() => fetchUser()} 
+/>`,
+    },
+    channelName: "@laptrinhfullstack",
+  },
 };

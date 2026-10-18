@@ -33,6 +33,42 @@ export type CodingTipScene = {
   };
 };
 
+export type PlatformSeo = {
+  title: string;
+  description: string;
+  hashtags: string[];
+};
+
+export type VideoSeo = {
+  youtube: {
+    title: string;
+    description: string;
+    hashtags: string[];
+  };
+  tiktok: {
+    caption: string;
+    hashtags: string[];
+  };
+  facebook: {
+    caption: string;
+    hashtags: string[];
+  };
+};
+
+export type VideoThumbnailProps = {
+  badgeText: string;
+  headlineMain: string;
+  headlineHighlight: string;
+  highlightColor?: string;
+  subText?: string;
+  codeSnippet?: {
+    filename: string;
+    code: string;
+    language: string;
+  };
+  channelName?: string;
+};
+
 export type SeriesAShortProps = {
   id: string;
   topicTitle: string;
@@ -45,4 +81,6 @@ export type SeriesAShortProps = {
     goodCode: CodingTipScene;
     takeawayText: string;
   };
+  seo?: VideoSeo;
+  thumbnail?: VideoThumbnailProps;
 };
