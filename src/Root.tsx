@@ -2,12 +2,116 @@ import { Composition, Folder, Still } from "remotion";
 import { CodingTipShort } from "./series/series-a/CodingTipShort";
 import { EventLoopShort } from "./series/series-a/EventLoopShort";
 import { VideoThumbnail } from "./core/VideoThumbnail";
+import { KineticTypographyPreview } from "./core/motion/KineticTypographyPreview";
+import { CodeRevealPreview } from "./core/motion/CodeRevealPreview";
+import { CodeFocusPreview } from "./core/motion/CodeFocusPreview";
+import { BeforeAfterPreview } from "./core/motion/BeforeAfterPreview";
+import { NodeGraphPreview } from "./core/motion/NodeGraphPreview";
+import { PacketFlowPreview } from "./core/motion/PacketFlowPreview";
+import { TerminalSequencePreview } from "./core/motion/TerminalSequencePreview";
+import { ProgressMetricPreview } from "./core/motion/ProgressMetricPreview";
+import { StateTransitionPreview } from "./core/motion/StateTransitionPreview";
+import { CameraMovePreview } from "./core/motion/CameraMovePreview";
+import {
+  SceneTransitionPreview,
+  SCENE_SEQUENCE_TOTAL_FRAMES,
+} from "./core/motion/SceneTransitionPreview";
 import { reactRerenderEpisode } from "./series/series-a/data/react-rerender";
 import { jsEventLoopEpisode } from "./series/series-a/data/js-event-loop";
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Folder name="MotionSystem">
+        <Composition
+          id="KineticTypographyPreview"
+          component={KineticTypographyPreview}
+          durationInFrames={180}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Composition
+          id="CodeRevealPreview"
+          component={CodeRevealPreview}
+          durationInFrames={120}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Composition
+          id="CodeFocusPreview"
+          component={CodeFocusPreview}
+          durationInFrames={120}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Composition
+          id="BeforeAfterPreview"
+          component={BeforeAfterPreview}
+          durationInFrames={90}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Composition
+          id="NodeGraphPreview"
+          component={NodeGraphPreview}
+          durationInFrames={120}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Composition
+          id="PacketFlowPreview"
+          component={PacketFlowPreview}
+          durationInFrames={90}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Composition
+          id="TerminalSequencePreview"
+          component={TerminalSequencePreview}
+          durationInFrames={100}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Composition
+          id="ProgressMetricPreview"
+          component={ProgressMetricPreview}
+          durationInFrames={90}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Composition
+          id="StateTransitionPreview"
+          component={StateTransitionPreview}
+          durationInFrames={120}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Composition
+          id="CameraMovePreview"
+          component={CameraMovePreview}
+          durationInFrames={120}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Composition
+          id="SceneTransitionPreview"
+          component={SceneTransitionPreview}
+          durationInFrames={SCENE_SEQUENCE_TOTAL_FRAMES}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+      </Folder>
       <Folder name="Series-A-CodingTips">
         <Composition
           id="ReactRerender"

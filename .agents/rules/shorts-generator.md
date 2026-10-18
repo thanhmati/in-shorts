@@ -1,93 +1,106 @@
-> **MANDATORY DIRECTIVE (TƯ DUY ĐẠO DIỄN THỰC THỤ - DIRECTOR MINDSET)**:  
-> Khi tạo video Shorts, Agent **BẮT BUỘC PHẢI TƯ DUY NHƯ MỘT ĐẠO DIỄN ĐIỆN ẢNH**:
-> 1. **Phân cảnh Động theo Kịch bản (Script-Driven Storyboarding)**:
->    * Tuyệt đối **KHÔNG CỐ ĐỊNH** số lượng scene (không dập khuôn mọi video phải có 3, 5 hay 6 scene).
->    * Số lượng scene, visual và thời lượng phụ thuộc 100% vào các **nhịp ý niệm (Story Beats)** của kịch bản cụ thể. Mỗi khi kịch bản chuyển ý, đạo diễn **CẮT CẢNH (Cut Scene)** ngay lập tức.
-> 2. **Mỗi Phân Cảnh Chỉ Thể Hiện DUY NHẤT 1 Ý Niệm (One Idea at One Time)**:
->    * Giọng đọc nói tới đâu, hình ảnh cận cảnh minh họa đúng trọng tâm điều đó.
->    * Nghiêm cấm "Slide PowerPoint mindset": Tuyệt đối KHÔNG BAO GIỜ nhét tiêu đề, code lỗi, code đúng, sơ đồ bộ nhớ, bộ đếm render và phụ đề vào cùng 1 frame từ đầu đến cuối khiến chữ bị li ti và nghẹt thở!
-> 3. **Chuẩn kích thước font chữ trên màn hình di động (1080x1920)**:
->    * Tiêu đề Hook / Chuyển ý: $\ge 56px - 66px$ (Font-weight 900+).
->    * Khối Code trong MacWindow: $\ge 30px - 34px$ (Line-height 1.6, padding rộng). Tuyệt đối cấm code font 20-24px li ti!
->    * Sơ đồ / Node / Box giải thích: $\ge 28px - 36px$.
->    * Phụ đề Kinetic Captions: $\ge 38px - 44px$ ở đáy màn hình.
-> 4. **Mật độ không gian (Stage Breathing Room)**: Giữa thanh Branding (đỉnh) và Captions (đáy), không gian sân khấu trung tâm chỉ dành trọn cho DUY NHẤT 1 visual element lớn của phân cảnh đó.
-> 5. **Chuyển cảnh điện ảnh**: Mỗi scene được bọc trong `<Sequence>` theo frame timeline của audio, kết hợp âm thanh SFX (`whoosh.wav`, `ding.wav`, `pop.wav`) và camera punch nhẹ.
-
+---
+trigger: always_on
 ---
 
-## WORKFLOW: 7 BƯỚC THỰC THI KHI NHẬN YÊU CẦU TẠO VIDEO MỚI
+# ADDENDUM: PRODUCTION-GRADE REMOTION AGENT
 
-Khi người dùng gửi yêu cầu (Ví dụ: *"Tạo short Series A về: JavaScript == vs ==="* hoặc *"Tạo video short về: Docker container vs image"*):
+## 1. PROJECT DISCOVERY — NEVER ASSUME
 
-### Bước 1: Tiếp nhận & Đối chiếu PRD
-1. Xác định series tương ứng theo **Mục 2 của PRD** (Series A: Coding Tips, Series B: System Design, Series C: Developer Tools).
-2. Kiểm tra schema dữ liệu tại [src/core/types.ts](file:///Users/thanhdo/Documents/Project/in-shorts/src/core/types.ts) để chuẩn bị các trường dữ liệu bắt buộc.
+- Before editing, inspect the project instructions, PRD, package.json, current types, existing episodes, reusable components, and Remotion version.
+- Verify all paths, scripts, component props, and schema requirements against the actual repository.
+- Use project-relative paths instead of machine-specific absolute paths.
+- Check the Git working tree and preserve unrelated user changes.
+- Never overwrite an existing episode or asset without checking its ownership and intended update behavior.
+- Reuse existing components and conventions whenever appropriate.
 
-### Bước 2: Soạn Kịch bản Chuẩn Tỷ lệ Giữ chân Cao (Retention)
-Agent phải tự động soạn kịch bản tiếng Việt tuân thủ nghiêm ngặt các quy tắc sau:
-* **Độ dài**: Từ 80 – 110 từ tiếng Việt (tương đương 30 – 45 giây phát âm ở tốc độ `+10%`).
-* **The Hook (0s - 3s)**: Câu đầu tiên bắt buộc phải đánh thẳng vào lỗi sai phổ biến hoặc câu hỏi gây tò mò:
-  * *Mẫu*: *"Dừng lại nếu bạn vẫn đang..."* / *"90% lập trình viên hiểu sai về..."* / *"Đừng bao giờ dùng... nếu không muốn dính bug!"*
-* **The Transition (Câu chuyển cảnh)**: Bắt buộc phải có một cụm từ dứt khoát làm mốc chuyển đổi giao diện:
-  * *Mẫu*: *"Hãy khắc phục ngay bằng cách..."* / *"Cách viết chuẩn hơn là..."* / *"Giải pháp tối ưu là..."*
-* **The CTA (Câu kết)**: Luôn kết thúc bằng:
-  * *"Lưu lại mẹo này và follow Lập trình Fullstack để lên trình mỗi ngày nhé!"*
-* **Code Snippets**: Đoạn code minh họa ngắn gọn, tối đa 8 - 12 dòng, đặt tên file rõ ràng (ví dụ: `BadCode.tsx`, `CleanCode.tsx`).
+## 2. DIRECTOR DECISION ENGINE
 
-### Bước 3: Sinh Âm thanh & Phụ đề qua Smart Phonetic Engine
-1. Kiểm tra kịch bản có chứa thuật ngữ công nghệ tiếng Anh mới chưa có trong từ điển `TECH_PHONETICS` của [scripts/generate_tts.py](file:///Users/thanhdo/Documents/Project/in-shorts/scripts/generate_tts.py) hay không. Nếu có, bổ sung ngay vào script.
-2. Thực thi script sinh audio và phụ đề:
-   ```bash
-   python3 scripts/generate_tts.py \
-     --text "<Nội dung kịch bản đã soạn>" \
-     --output-audio "public/audio/<slug>.mp3" \
-     --output-json "public/audio/<slug>.json"
-   ```
-3. Script tự động phiên âm cho giọng đọc (vd: `diu-con-bách`, `Ri-ét`) nhưng bảo lưu chữ tiếng Anh gốc trên phụ đề (`useCallback`, `React`).
+- Plan visuals from the meaning and pacing of the narration, not from a fixed scene count.
+- Each shot must have one clear visual focal point.
+- A story beat does not automatically require a new Sequence.
+- Choose between a cut, camera movement, highlight, reveal, or state transition based on the intended storytelling effect.
+- Allow multiple visual elements when comparison or relationships are essential to understanding the concept.
+- Do not add transitions, camera punches, or sound effects without a clear purpose.
+- Every shot must communicate one primary idea and support the current narration.
+- If a visual cannot be understood quickly on a mobile screen, simplify it.
 
-### Bước 4: Tính toán Frame & Tạo File Cấu hình (Data Contract)
-1. Đọc file `public/audio/<slug>.json` vừa tạo:
-   * Phân tích các nhịp ý niệm (Story Beats) để cắt cảnh theo thời lượng audio.
-   * Lấy tổng số frame từ `durationInFrames`.
-2. Tạo file cấu hình tại `src/series/<series-id>/data/<slug>.ts` theo đúng interface trong PRD.
-   * *Lưu ý*: File `.ts` chỉ chứa dữ liệu cần thiết cho Remotion render (`scenes`, `subtitles`, `thumbnail`). **Tuyệt đối KHÔNG nhét nội dung copywriting SEO vào file `.ts`** để giữ cấu hình code tinh gọn.
+## 3. SCRIPT AND TECHNICAL ACCURACY
 
-### Bước 5: Đăng ký Composition & Thumbnail Still vào Root.tsx
-1. Cập nhật [src/Root.tsx](file:///Users/thanhdo/Documents/Project/in-shorts/src/Root.tsx):
-   * Thêm `<Composition>` mới với id định danh video (`width: 1080`, `height: 1920`, `fps: 30`).
-   * Thêm `<Still>` cho ảnh bìa:
-     ```tsx
-     <Still
-       id="<CompositionId>-Thumbnail"
-       component={VideoThumbnail}
-       width={1080}
-       height={1920}
-       defaultProps={episodeData.thumbnail}
-     />
-     ```
+- Prioritize correctness, clarity, and audience comprehension over word count.
+- Use hooks that create genuine curiosity without fabricated statistics or unsupported claims.
+- Validate code examples and technical statements before generating final narration.
+- Verify version-sensitive behavior against reliable documentation or executable tests when feasible.
+- Clearly distinguish general rules from assumptions and exceptions.
+- Do not generate audio from a script that has unresolved technical inaccuracies.
 
-### Bước 6: Đóng gói Thumbnail & Xuất File Markdown SEO Đa Nền Tảng
-1. **Render Thumbnail Tự động**:
-   ```bash
-   npx remotion still <CompositionId>-Thumbnail out/<slug>-thumbnail.png
-   ```
-2. **Xuất file Markdown SEO Đa Nền Tảng**:
-   Tạo file Markdown tại `src/series/<series-id>/data/<slug>.seo.md` (đồng thời xuất ra `out/<slug>-seo.md`) chứa đầy đủ nội dung tối ưu sẵn sàng copy-paste:
-   * **YouTube Shorts**: Tiêu đề giật gân < 70 ký tự (#shorts), mô tả đánh trúng pain-point, hashtags mô tả và **Video Tags chuẩn định dạng `tag1, tag2, tag3`** để copy paste thẳng vào mục Tags của YouTube Studio.
-   * **TikTok**: Caption súc tích < 150 ký tự, bộ hashtag xu hướng + ngách.
-   * **Facebook Reels**: Câu hỏi tương tác mở đầu, 3 gạch đầu dòng tóm tắt bài học, hashtag công nghệ.
-   * **Đường dẫn Thumbnail**: Chỉ rõ file ảnh bìa `out/<slug>-thumbnail.png`.
+## 4. AUDIO AND TIMELINE CONTRACT
 
-### Bước 7: Kiểm tra Chất lượng (Quality Gate) & Báo cáo
-1. **Chạy Quality Check**:
-   ```bash
-   npm run lint
-   ```
-   *Bắt buộc phải Exit Code 0, không có lỗi TypeScript, không có cảnh báo `@remotion/non-pure-animation` (không dùng CSS transition).*
-2. **Báo cáo Người dùng**:
-   * Thông báo video đã sẵn sàng xem trước trên Remotion Studio:
-     `http://localhost:3000/<CompositionId>`
-   * Bàn giao link file Thumbnail: `out/<slug>-thumbnail.png`.
-   * Bàn giao file SEO: `out/<slug>-seo.md`.
-   * **Quy tắc render video**: Chỉ chạy lệnh xuất file MP4 (`npx remotion render <CompositionId> out/<slug>.mp4`) khi người dùng ra lệnh yêu cầu render hoặc xuất video.
+- Inspect the actual TTS output schema before consuming its fields.
+- Treat total audio duration and per-segment timestamps as separate requirements.
+- Use available sentence or word timestamps to align visual events and captions.
+- If precise timestamps are unavailable, use an explicit segmentation strategy and validate synchronization.
+- Ensure all scene, subtitle, animation, and audio frame ranges are valid.
+- Detect unintended overlaps, gaps, negative frame positions, and content extending beyond the composition duration.
+- Verify audio and subtitle assets exist before registration and rendering.
+
+## 5. MOBILE VISUAL QUALITY
+
+- Treat font sizes as minimum design targets, not proof of readability.
+- Validate text width, line count, safe areas, contrast, wrapping, and clipping.
+- Do not solve overflow by silently shrinking typography below the defined minimum.
+- Simplify code or split content into additional shots when necessary.
+- Keep captions visually separate from code and other critical content.
+- Use platform-aware safe areas and avoid placing important information under interface overlays.
+- Apply animation consistently and avoid unnecessary motion.
+
+## 6. REUSABLE REMOTION ARCHITECTURE
+
+- Separate episode content, timeline data, visual components, and social metadata.
+- Reuse existing visual primitives before introducing new components.
+- Give each scene a stable identifier and validated timing data.
+- Validate composition IDs, component props, asset paths, and episode schema before registration.
+- Avoid duplicate registrations and unintended changes to existing episodes.
+- Use deterministic frame-based animation and respect the installed Remotion version.
+
+## 7. QUALITY GATES
+
+Before reporting an episode as ready:
+
+1. Validate episode data against the actual schema.
+2. Run the project's TypeScript and lint checks using verified commands.
+3. Validate timeline ranges, audio duration, subtitle timing, and asset existence.
+4. Render the thumbnail and representative frames or a short preview when feasible.
+5. Inspect visual output for clipping, layout defects, unreadable code, and timing mismatches.
+6. Run relevant regression checks for existing compositions.
+7. Fix detected defects and rerun the affected checks.
+
+A successful lint command alone is not proof of rendering or visual correctness.
+
+Do not claim that an unexecuted check passed. If a check cannot run, report it as unverified.
+
+## 8. FAILURE RECOVERY AND IDEMPOTENCY
+
+- Make each production step's inputs, outputs, and success conditions explicit.
+- Record failures with actionable diagnostic information.
+- Retry recoverable failures a limited number of times.
+- Resume from valid completed artifacts when safe.
+- Prevent duplicate registrations, duplicate output generation, and accidental overwrites.
+- Stop when a required gate fails and cannot be recovered safely.
+- Preserve unrelated changes and report unresolved issues instead of hiding them.
+
+## 9. HANDOFF CONTRACT
+
+Report only artifacts that actually exist and have been verified.
+
+Distinguish clearly between:
+
+- Generated
+- Validated
+- Preview-rendered
+- Final-rendered
+
+Do not imply that a video has been rendered merely because its composition is registered.
+
+Provide the verified paths for the thumbnail and SEO file, the preview instructions, the checks performed, and any remaining limitations.
+
+Only render the final MP4 when explicitly requested, unless the user has authorized a different workflow.

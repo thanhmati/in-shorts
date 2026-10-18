@@ -5,11 +5,24 @@ import { CodeHighlightLine } from "./types";
 import { THEME } from "./theme";
 import { darkHighContrastTheme } from "./syntaxTheme";
 
-interface CodeBlockProps {
+export interface CodeLineCustomStyle {
+  opacity?: number;
+  backgroundColor?: string;
+  borderLeft?: string;
+  boxShadow?: string;
+  transform?: string;
+  marker?: React.ReactNode;
+  label?: string;
+  labelStyle?: React.CSSProperties;
+}
+
+export interface CodeBlockProps {
   code: string;
   language?: string;
   highlightLines?: CodeHighlightLine[];
   fontSize?: number;
+  lineHeight?: number;
+  getLineCustomStyle?: (lineNumber: number) => CodeLineCustomStyle | undefined;
 }
 
 export const CodeBlock: React.FC<CodeBlockProps> = ({
@@ -17,6 +30,8 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   language = "tsx",
   highlightLines = [],
   fontSize = 26,
+  lineHeight = 1.65,
+  getLineCustomStyle,
 }) => {
   const frame = useCurrentFrame();
 
@@ -35,14 +50,16 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
             backgroundColor: "transparent",
             fontFamily: THEME.fonts.code,
             fontSize: `${fontSize}px`,
-            lineHeight: 1.65,
+            lineHeight,
             overflowX: "hidden",
+            whiteSpace: "pre",
             color: THEME.colors.textPrimary, // Enforce light text color constraint
           }}
         >
           {tokens.map((line, i) => {
             const lineNum = i + 1;
             const highlight = getLineHighlight(lineNum);
+            const custom = getLineCustomStyle?.(lineNum);
 
             // Breathing pulse effect for highlighted lines
             const pulse = 0.75 + 0.25 * Math.sin((frame + lineNum * 8) / 8);
@@ -63,7 +80,15 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
               } else {
                 bgStyle = `rgba(56, 189, 248, ${0.15 * pulse})`;
                 borderLeftStyle = `4px solid ${THEME.colors.accentCyan}`;
+                boxShadowStyle = `inset 0 0 16px rgba(56, 189, 248, ${0.12 * pulse})`;
               }
+            }
+
+            // Custom line overrides (e.g. from CodeFocus)
+            if (custom) {
+              if (custom.backgroundColor) bgStyle = custom.backgroundColor;
+              if (custom.borderLeft) borderLeftStyle = custom.borderLeft;
+              if (custom.boxShadow) boxShadowStyle = custom.boxShadow;
             }
 
             return (
@@ -76,20 +101,39 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
                   backgroundColor: bgStyle,
                   borderLeft: borderLeftStyle,
                   boxShadow: boxShadowStyle,
-                  paddingLeft: "12px",
+                  paddingLeft: "10px",
                   paddingRight: "12px",
                   margin: "2px -12px",
                   borderRadius: "4px",
                   color: THEME.colors.textPrimary, // Enforce row contrast
+                  opacity: custom?.opacity !== undefined ? custom.opacity : 1,
+                  transform: custom?.transform || "none",
+                  minHeight: `${fontSize * lineHeight}px`,
+                  boxSizing: "border-box",
                 }}
               >
+                {/* Optional line marker (e.g. caret or arrow) */}
+                {custom?.marker !== undefined ? (
+                  <span
+                    style={{
+                      width: "18px",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginRight: "4px",
+                    }}
+                  >
+                    {custom.marker}
+                  </span>
+                ) : null}
+
                 {/* Line number */}
                 <span
                   style={{
                     width: "36px",
                     display: "inline-block",
                     userSelect: "none",
-                    color: highlight ? "#CBD5E1" : "#64748B",
+                    color: highlight || custom?.borderLeft !== "4px solid transparent" ? "#CBD5E1" : "#64748B",
                     fontSize: `${fontSize - 6}px`,
                     fontWeight: 600,
                   }}
@@ -98,7 +142,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
                 </span>
 
                 {/* Tokens */}
-                <div style={{ flex: 1, color: THEME.colors.textPrimary }}>
+                <div style={{ flex: 1, color: THEME.colors.textPrimary, display: "flex", flexWrap: "nowrap" }}>
                   {line.map((token, key) => {
                     const tokenProps = getTokenProps({ token });
                     return (
@@ -114,6 +158,23 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
                     );
                   })}
                 </div>
+
+                {/* Optional right label */}
+                {custom?.label ? (
+                  <span
+                    style={{
+                      marginLeft: "12px",
+                      padding: "3px 10px",
+                      borderRadius: "6px",
+                      fontSize: `${fontSize - 8}px`,
+                      fontWeight: 800,
+                      whiteSpace: "nowrap",
+                      ...custom.labelStyle,
+                    }}
+                  >
+                    {custom.label}
+                  </span>
+                ) : null}
               </div>
             );
           })}
