@@ -1,0 +1,219 @@
+{
+  "text": "Muốn làm chủ NestJS và tự tay xây dựng Real-time Chat App chuẩn Enterprise? Khám phá ngay khóa học của mình tại link dưới bio nhé!",
+  "spokenText": "Muốn làm chủ nét-dây-ét và tự tay xây dựng ri-ờ-tam chát áp chuẩn en-tơ-prai? Khám phá ngay khóa học của mình tại linh dưới bi-ô nhé!",
+  "voice": "vi-VN-NamMinhNeural",
+  "rate": "+10%",
+  "fps": 30,
+  "durationInFrames": 265,
+  "durationInSeconds": 8.83,
+  "words": [
+    {
+      "word": "Muốn",
+      "spoken": "Muốn",
+      "startSec": 0.1,
+      "endSec": 0.452,
+      "startFrame": 3,
+      "endFrame": 14
+    },
+    {
+      "word": "làm",
+      "spoken": "làm",
+      "startSec": 0.452,
+      "endSec": 0.611,
+      "startFrame": 14,
+      "endFrame": 18
+    },
+    {
+      "word": "chủ",
+      "spoken": "chủ",
+      "startSec": 0.611,
+      "endSec": 0.793,
+      "startFrame": 18,
+      "endFrame": 24
+    },
+    {
+      "word": "NestJS",
+      "spoken": "nét-dây-ét",
+      "startSec": 0.793,
+      "endSec": 1.373,
+      "startFrame": 24,
+      "endFrame": 41
+    },
+    {
+      "word": "và",
+      "spoken": "và",
+      "startSec": 1.373,
+      "endSec": 1.543,
+      "startFrame": 41,
+      "endFrame": 46
+    },
+    {
+      "word": "tự",
+      "spoken": "tự",
+      "startSec": 1.543,
+      "endSec": 1.714,
+      "startFrame": 46,
+      "endFrame": 51
+    },
+    {
+      "word": "tay",
+      "spoken": "tay",
+      "startSec": 1.714,
+      "endSec": 1.884,
+      "startFrame": 51,
+      "endFrame": 57
+    },
+    {
+      "word": "xây",
+      "spoken": "xây",
+      "startSec": 1.884,
+      "endSec": 2.043,
+      "startFrame": 57,
+      "endFrame": 61
+    },
+    {
+      "word": "dựng",
+      "spoken": "dựng",
+      "startSec": 2.043,
+      "endSec": 2.259,
+      "startFrame": 61,
+      "endFrame": 68
+    },
+    {
+      "word": "Real-time",
+      "spoken": "ri-ờ-tam",
+      "startSec": 2.259,
+      "endSec": 2.702,
+      "startFrame": 68,
+      "endFrame": 81
+    },
+    {
+      "word": "Chat",
+      "spoken": "chát",
+      "startSec": 2.702,
+      "endSec": 2.975,
+      "startFrame": 81,
+      "endFrame": 89
+    },
+    {
+      "word": "App",
+      "spoken": "áp",
+      "startSec": 2.975,
+      "endSec": 3.111,
+      "startFrame": 89,
+      "endFrame": 93
+    },
+    {
+      "word": "chuẩn",
+      "spoken": "chuẩn",
+      "startSec": 3.111,
+      "endSec": 3.43,
+      "startFrame": 93,
+      "endFrame": 103
+    },
+    {
+      "word": "Enterprise?",
+      "spoken": "en-tơ-prai",
+      "startSec": 3.43,
+      "endSec": 4.043,
+      "startFrame": 103,
+      "endFrame": 121
+    },
+    {
+      "word": "Khám",
+      "spoken": "Khám",
+      "startSec": 4.8,
+      "endSec": 5.061,
+      "startFrame": 144,
+      "endFrame": 152
+    },
+    {
+      "word": "phá",
+      "spoken": "phá",
+      "startSec": 5.061,
+      "endSec": 5.266,
+      "startFrame": 152,
+      "endFrame": 158
+    },
+    {
+      "word": "ngay",
+      "spoken": "ngay",
+      "startSec": 5.266,
+      "endSec": 5.448,
+      "startFrame": 158,
+      "endFrame": 163
+    },
+    {
+      "word": "khóa",
+      "spoken": "khóa",
+      "startSec": 5.448,
+      "endSec": 5.641,
+      "startFrame": 163,
+      "endFrame": 169
+    },
+    {
+      "word": "học",
+      "spoken": "học",
+      "startSec": 5.641,
+      "endSec": 5.823,
+      "startFrame": 169,
+      "endFrame": 175
+    },
+    {
+      "word": "của",
+      "spoken": "của",
+      "startSec": 5.823,
+      "endSec": 5.914,
+      "startFrame": 175,
+      "endFrame": 177
+    },
+    {
+      "word": "mình",
+      "spoken": "mình",
+      "startSec": 5.914,
+      "endSec": 6.164,
+      "startFrame": 177,
+      "endFrame": 185
+    },
+    {
+      "word": "tại",
+      "spoken": "tại",
+      "startSec": 6.164,
+      "endSec": 6.323,
+      "startFrame": 185,
+      "endFrame": 190
+    },
+    {
+      "word": "link",
+      "spoken": "linh",
+      "startSec": 6.323,
+      "endSec": 6.539,
+      "startFrame": 190,
+      "endFrame": 196
+    },
+    {
+      "word": "dưới",
+      "spoken": "dưới",
+      "startSec": 6.539,
+      "endSec": 6.732,
+      "startFrame": 196,
+      "endFrame": 202
+    },
+    {
+      "word": "bio",
+      "spoken": "bi-ô",
+      "startSec": 6.732,
+      "endSec": 7.073,
+      "startFrame": 202,
+      "endFrame": 212
+    },
+    {
+      "word": "nhé!",
+      "spoken": "nhé",
+      "startSec": 7.073,
+      "endSec": 7.334,
+      "startFrame": 212,
+      "endFrame": 220
+    }
+  ]
+}

@@ -124,7 +124,7 @@ export const JsInterviewQuizShort: React.FC<JsInterviewQuizEpisodeProps> = ({
           }}
         >
           {/* Scene 0: Hook */}
-          <Sequence from={0} durationInFrames={185} premountFor={10}>
+          <Sequence durationInFrames={185} premountFor={10}>
             <Scene0Hook />
           </Sequence>
 

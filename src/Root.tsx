@@ -22,6 +22,10 @@ import { AsyncForeachShort } from "./series/series-a/AsyncForeachShort";
 import { asyncForeachEpisode } from "./series/series-a/data/async-foreach";
 import { JsInterviewQuizShort } from "./series/series-a/JsInterviewQuizShort";
 import { jsInterviewQuizEpisode } from "./series/series-a/data/js-interview-quiz";
+import {
+  CoursePromoOutroPreview,
+  udemyPromoOutroSubtitles,
+} from "./core/CoursePromoOutroPreview";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -111,6 +115,16 @@ export const RemotionRoot: React.FC = () => {
           id="SceneTransitionPreview"
           component={SceneTransitionPreview}
           durationInFrames={SCENE_SEQUENCE_TOTAL_FRAMES}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+      </Folder>
+      <Folder name="PromoComponents">
+        <Composition
+          id="UdemyPromoOutroPreview"
+          component={CoursePromoOutroPreview}
+          durationInFrames={udemyPromoOutroSubtitles.durationInFrames || 265}
           fps={30}
           width={1080}
           height={1920}

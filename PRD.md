@@ -66,12 +66,16 @@ in-shorts/
 │   └── generate_tts.py                 # Pipeline Edge-TTS + Smart Phonetic Engine
 ├── public/
 │   ├── audio/                          # File mp3 + json subtitle theo id (vd: [slug].mp3, [slug].json)
+│   ├── courses/                        # Ảnh bìa khóa học Udemy & avatar giảng viên
 │   ├── fonts/                          # JetBrains Mono, Inter
 │   └── sfx/                            # Âm thanh hiệu ứng (click, whoosh, pop)
 ├── src/
 │   ├── core/                           # Bộ UI Components cốt lõi dùng chung
 │   │   ├── types.ts                    # TypeScript types chuẩn của toàn bộ dự án
 │   │   ├── theme.ts                    # Bảng màu Dark Modern, fonts, shadows
+│   │   ├── courses.ts                  # Danh mục cấu hình metadata khóa học Udemy (data-driven)
+│   │   ├── CoursePromoOutro.tsx        # Component Outro quảng bá khóa học Udemy chuẩn hóa
+│   │   ├── CoursePromoOutroPreview.tsx # Composition test & preview Outro trên Remotion Studio
 │   │   ├── SafeLayout.tsx              # Khung 1080x1920 an toàn cho YouTube Shorts
 │   │   ├── Branding.tsx                # Badge nhận diện @laptrinhfullstack + Tag Series + AudioEqualizer
 │   │   ├── MacWindow.tsx               # Cửa sổ giả lập MacOS (3 nút traffic lights)
