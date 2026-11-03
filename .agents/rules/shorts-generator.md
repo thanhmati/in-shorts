@@ -24,6 +24,16 @@ trigger: always_on
 - Every shot must communicate one primary idea and support the current narration.
 - If a visual cannot be understood quickly on a mobile screen, simplify it.
 
+## 2.1. VISUAL-FIRST & MOTION-DRIVEN PHILOSOPHY (NO TEXT OVERLOAD)
+
+- **Tập trung Motion Graphics & Animation**: Màn hình phải sống động với chuyển động (sơ đồ node, luồng packet di chuyển, hiệu ứng ánh sáng, code spotlight, visual metaphors, state transitions).
+- **Tuyệt đối KHÔNG nhồi nhét text**: Nghiêm cấm biến video thành slide thuyết trình hoặc hiển thị các câu văn giải thích dài dòng, các bullet points nhiều chữ.
+- **Voiceover giải thích, Visual biểu diễn**: Giọng đọc (Voiceover / TTS) đảm nhận việc giải thích logic, cơ chế và chi tiết kỹ thuật. Visual chỉ hiển thị:
+  - Tên thành phần hoặc từ khóa cốt lõi (1 - 3 từ: `MIDDLEWARE`, `GUARD`, `INTERCEPTOR`).
+  - Badge trạng thái / method ngắn gọn (`canActivate()`, `RxJS tap()`, `200 OK`).
+  - Animation trực quan hóa chính xác điều voiceover đang nói (gói tin bay, khiên bảo vệ quét laser, mũi tên vòng quay lại).
+- **Quy tắc nhãn ngắn (Max 3-5 Words Rule)**: Mọi label/badge trên visual không vượt quá 3 - 5 từ. Những gì có thể nói bằng lời thì KHÔNG viết lên màn hình!
+
 ## 3. SCRIPT AND TECHNICAL ACCURACY
 
 - Prioritize correctness, clarity, and audience comprehension over word count.

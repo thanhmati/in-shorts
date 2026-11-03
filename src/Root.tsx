@@ -26,6 +26,8 @@ import {
   CoursePromoOutroPreview,
   udemyPromoOutroSubtitles,
 } from "./core/CoursePromoOutroPreview";
+import { ITShort } from "./series/it-shorts/ITShort";
+import { it001Episode } from "./series/it-shorts/data/it-001-nestjs-lifecycle";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -204,6 +206,35 @@ export const RemotionRoot: React.FC = () => {
             width={1080}
             height={1920}
             defaultProps={jsInterviewQuizEpisode.thumbnail}
+          />
+        )}
+      </Folder>
+      <Folder name="Series-IT-NestJS">
+        <Composition
+          id="IT-001"
+          component={ITShort}
+          durationInFrames={it001Episode.subtitles.durationInFrames || 1350}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={it001Episode}
+        />
+        <Composition
+          id="ITShort"
+          component={ITShort}
+          durationInFrames={it001Episode.subtitles.durationInFrames || 1350}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={it001Episode}
+        />
+        {it001Episode.thumbnail && (
+          <Still
+            id="IT-001-Thumbnail"
+            component={VideoThumbnail}
+            width={1080}
+            height={1920}
+            defaultProps={it001Episode.thumbnail}
           />
         )}
       </Folder>

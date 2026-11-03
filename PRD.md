@@ -42,6 +42,10 @@
      * Phụ đề Kinetic Captions: $\ge 38px - 44px$.
 4. **Chuyển cảnh điện ảnh (Cinematic Pacing)**:
    * Chuyển cảnh dứt khoát khớp chính xác theo frame giọng nói trong subtitle JSON, kết hợp âm thanh SFX (whoosh, pop, ding) và camera punch nhẹ để giữ nhịp xem liên tục.
+5. **Visual-First & Motion-Driven (Triệt tiêu Text rườm rà)**:
+   * **Voiceover giải thích, Visual biểu diễn**: Giọng đọc đảm nhận toàn bộ việc phân tích, giải thích cơ chế. Màn hình không phải là slide đọc chữ!
+   * **Màn hình ưu tiên Motion Graphics & Animation**: Tập trung vào sơ đồ topology chuyển động, gói tin (data packet) di chuyển, laser scan bảo vệ, radar xoay, code spotlight và biểu đồ trực quan.
+   * **Quy tắc Minimal Text (Tối đa 1-3 từ cho mỗi nhãn)**: Tuyệt đối không dùng câu văn hay bullet points giải thích dài. Mọi nhãn trên màn hình chỉ là tên khái niệm (`MIDDLEWARE`, `GUARD`), token code (`canActivate()`) hoặc trạng thái ngắn (`200 OK`).
 
 ### 2.2. Series B — System design giải thích bằng animation
 * **Mục tiêu**: Trực quan hóa kiến trúc hệ thống bằng sơ đồ node SVG chuyển động (Request flow, Redis Caching, Message Queue Kafka, Load Balancer, JWT Auth).
