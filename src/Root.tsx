@@ -28,6 +28,11 @@ import {
 } from "./core/CoursePromoOutroPreview";
 import { ITShort } from "./series/it-shorts/ITShort";
 import { it001Episode } from "./series/it-shorts/data/it-001-nestjs-lifecycle";
+import {
+  BackendDeveloperShort,
+  BACKEND_SHORT_TOTAL_FRAMES,
+} from "./series/it-shorts/BackendDeveloperShort";
+import { it002Episode } from "./series/it-shorts/data/it-002-backend-developer";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -235,6 +240,35 @@ export const RemotionRoot: React.FC = () => {
             width={1080}
             height={1920}
             defaultProps={it001Episode.thumbnail}
+          />
+        )}
+      </Folder>
+      <Folder name="Series-IT-Backend">
+        <Composition
+          id="IT-002"
+          component={BackendDeveloperShort}
+          durationInFrames={BACKEND_SHORT_TOTAL_FRAMES}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={it002Episode}
+        />
+        <Composition
+          id="BackendDeveloperShort"
+          component={BackendDeveloperShort}
+          durationInFrames={BACKEND_SHORT_TOTAL_FRAMES}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={it002Episode}
+        />
+        {it002Episode.thumbnail && (
+          <Still
+            id="IT-002-Thumbnail"
+            component={VideoThumbnail}
+            width={1080}
+            height={1920}
+            defaultProps={it002Episode.thumbnail}
           />
         )}
       </Folder>

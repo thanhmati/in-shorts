@@ -158,6 +158,13 @@ TECH_PHONETICS = {
     "users": "du-sơ",
     "item": "ai-từm",
     "items": "ai-từm",
+    "login": "lo-gin",
+    "bcrypt": "bi-críp",
+    "query": "que-ri",
+    "ratelimit": "rết li-mịt",
+    "rate-limit": "rết li-mịt",
+    "bruteforce": "bờ-rút phót",
+    "brute-force": "bờ-rút phót",
     "console": "con-xôn",
     "log": "lóc",
     "done": "đơn",
@@ -305,7 +312,7 @@ def main():
     parser.add_argument("--text", type=str, help="Text to speak")
     parser.add_argument("--file", type=str, help="Text file to read")
     parser.add_argument("--voice", type=str, default="vi-VN-NamMinhNeural", help="Voice name")
-    parser.add_argument("--rate", type=str, default="+10%", help="Speed adjustment (+10% for Shorts)")
+    parser.add_argument("--rate", type=str, default="+10%", help="Speed adjustment (+10%% for Shorts)")
     parser.add_argument("--fps", type=int, default=30, help="Frames per second")
     parser.add_argument("--output-audio", type=str, required=True, help="Path to output mp3")
     parser.add_argument("--output-json", type=str, required=True, help="Path to output json")
