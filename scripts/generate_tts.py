@@ -2,9 +2,8 @@
 """
 TTS & Word-level Captions Generator for Remotion Shorts.
 Engine: VieNeu-TTS (48kHz Neural Audio, On-device, Voice Cloning)
-Includes Smart Phonetic Engine for Vietnamese IT/Tech pronunciation.
-- Pronounces technical English terms in natural Vietnamese dev style.
-- Preserves clean original English code syntax on subtitles and visual layers.
+- Direct neural text-to-speech synthesis via VieNeu.
+- Clean original text displayed on subtitles and visual layers.
 - Uses faster-whisper alignment layer for frame-accurate Remotion Kinetic Captions.
 """
 
@@ -24,207 +23,15 @@ import subprocess
 import tempfile
 import difflib
 
-# Comprehensive dictionary for English IT/Tech terms pronounced in Vietnamese dev style
-TECH_PHONETICS = {
-    "react": "Ri-ét",
-    "usecallback": "diu-con-bách",
-    "usememo": "diu-mê-mô",
-    "usestate": "diu-xờ-tết",
-    "useeffect": "diu-ép-phếch",
-    "useref": "diu-rét",
-    "usecontext": "diu-con-tếch",
-    "usereducer": "diu-ri-điu-sơ",
-    "component": "com-pâu-nần",
-    "components": "com-pâu-nần",
-    "re-render": "ri-ren-đơ",
-    "rerender": "ri-ren-đơ",
-    "render": "ren-đơ",
-    "inline": "in-lai",
-    "function": "phăng-sừn",
-    "functions": "phăng-sừn",
-    "object": "ọp-chếch",
-    "objects": "ọp-chếch",
-    "array": "ơ-rây",
-    "string": "xờ-tring",
-    "number": "năm-bơ",
-    "boolean": "bu-li-ừn",
-    "props": "próp",
-    "hook": "húc",
-    "hooks": "húc",
-    "javascript": "gia-va-sờ-cờ-ríp",
-    "typescript": "típ-sờ-cờ-ríp",
-    "nodejs": "nốt-dây-ét",
-    "node": "nốt",
-    "docker": "đốc-cơ",
-    "container": "cơn-tei-nơ",
-    "containers": "cơn-tei-nơ",
-    "microservices": "mai-cro-sơ-vít",
-    "microservice": "mai-cro-sơ-vít",
-    "backend": "bách-en",
-    "frontend": "phron-ten",
-    "fullstack": "phun-xờ-tách",
-    "database": "đa-ta-bây",
-    "redis": "rê-đít",
-    "kafka": "cáp-ca",
-    "api": "ây-pi-ai",
-    "apis": "ây-pi-ai",
-    "rest": "rét",
-    "nestjs": "nét-dây-ét",
-    "nest": "nét",
-    "prisma": "prít-ma",
-    "postgresql": "pốt-grét-quy-en",
-    "postgres": "pốt-grét",
-    "websocket": "oép-sốc-két",
-    "websockets": "oép-sốc-két",
-    "socket": "sốc-két",
-    "socketio": "sốc-két-ai-âu",
-    "swagger": "xoa-gơ",
-    "husky": "hấc-x-ki",
-    "commitlint": "côm-mít-lin",
-    "throttler": "tơ-rót-lơ",
-    "middleware": "mít-đồ-ue",
-    "middlewares": "mít-đồ-ue",
-    "guard": "gạt",
-    "guards": "gạt",
-    "pipe": "paip",
-    "pipes": "paip",
-    "interceptor": "in-tơ-xép-tơ",
-    "interceptors": "in-tơ-xép-tơ",
-    "request": "ri-quét",
-    "requests": "ri-quét",
-    "response": "ri-xờ-pon",
-    "responses": "ri-xờ-pon",
-    "maintain": "men-tên",
-    "lifecycle": "lai-xai-cồ",
-    "route": "rao",
-    "routes": "rao",
-    "handler": "hen-đơ-lơ",
-    "handlers": "hen-đơ-lơ",
-    "authentication": "ót-then-ti-cây-sừn",
-    "authorization": "ót-thơ-rai-zây-sừn",
-    "logging": "lóc-ginh",
-    "decorator": "đe-cô-rây-tơ",
-    "decorators": "đe-cô-rây-tơ",
-    "udemy": "du-đe-mi",
-    "realtime": "ri-ờ-tam",
-    "real-time": "ri-ờ-tam",
-    "chat": "chát",
-    "app": "áp",
-    "apps": "áp",
-    "enterprise": "en-tơ-prai",
-    "bio": "bi-ô",
-    "link": "linh",
-    "graphql": "gờ-rap-qui-eo",
-    "jwt": "di-đắp-lưu-ti",
-    "oauth": "ô-ót",
-    "promise": "prô-mít",
-    "async": "ây-xinh",
-    "await": "ơ-uây",
-    "satisfies": "sa-tis-phai",
-    "github": "gít-hắp",
-    "git": "gít",
-    "commit": "côm-mít",
-    "merge": "mợt",
-    "rebase": "ri-bây",
-    "branch": "bờ-ranh",
-    "terminal": "tơ-mi-nồ",
-    "cache": "cát",
-    "caching": "cát-xinh",
-    "cookie": "cúc-ki",
-    "session": "xét-sừn",
-    "token": "tô-kừn",
-    "bug": "bắc",
-    "bugs": "bắc",
-    "debug": "đi-bắc",
-    "clean": "clin",
-    "code": "cốt",
-    "coding": "cốt-đinh",
-    "server": "xơ-vơ",
-    "client": "cơ-lai-ừn",
-    "load": "lốt",
-    "balancer": "ba-lân-xơ",
-    "queue": "kiu",
-    "event": "i-ven",
-    "loop": "lúp",
-    "call": "con",
-    "back": "bách",
-    "callback": "con-bách",
-    "callbacks": "con-bách",
-    "stack": "xờ-tách",
-    "microtask": "mai-cờ-rô-tác",
-    "macrotask": "mác-cờ-rô-tác",
-    "settimeout": "xét-tam-ao",
-    "vip": "víp",
-    "memo": "mê-mô",
-    "foreach": "pho-ít",
-    "for": "pho",
-    "of": "ọp",
-    "map": "mép",
-    "all": "on",
-    "save": "xêu",
-    "savedb": "xêu-đi-bi",
-    "db": "đi-bi",
-    "user": "du-sơ",
-    "users": "du-sơ",
-    "item": "ai-từm",
-    "items": "ai-từm",
-    "login": "lo-gin",
-    "bcrypt": "bi-críp",
-    "query": "que-ri",
-    "ratelimit": "rết li-mịt",
-    "rate-limit": "rết li-mịt",
-    "bruteforce": "bờ-rút phót",
-    "brute-force": "bờ-rút phót",
-    "console": "con-xôn",
-    "log": "lóc",
-    "done": "đơn",
-    "follow": "phô-lâu",
-    "typeof": "típ-ọp",
-    "nan": "en-ây-en",
-    "senior": "xi-ni-ơ",
-    "junior": "du-ni-ơ",
-    "true": "tru",
-    "false": "phôn",
-    "undefined": "ăn-đi-phai",
-    "hoisting": "hoi-xờ-tinh",
-    "var": "va",
-    "quiz": "quít",
-    "interview": "in-tơ-viu",
-    "comment": "côm-mừn",
-    "primitive": "pri-mi-típ",
-}
-
 def clean_word(w: str) -> str:
     return re.sub(r"[^\w]", "", w).lower()
 
-def transform_phonetics(original_text: str):
+def extract_display_tokens(text: str):
     """
-    Transforms tech terms into phonetic spellings for speech,
-    while returning matching original display words for subtitles.
+    Extracts display tokens from original text for subtitle alignment.
     """
-    tokens = original_text.split()
-    spoken_tokens = []
-    display_tokens = []
-
-    for tok in tokens:
-        match = re.match(r"^([^\w\-]*)([\w\-]+)([^\w\-]*)$", tok)
-        if match:
-            prefix, core, suffix = match.groups()
-            core_lower = core.lower()
-
-            if core_lower in TECH_PHONETICS:
-                phonetic = TECH_PHONETICS[core_lower]
-                spoken_tokens.append(f"{prefix}{phonetic}{suffix}")
-            else:
-                spoken_tokens.append(tok)
-            display_tokens.append(tok)
-        else:
-            spoken_tokens.append(tok)
-            if re.search(r"[\w]", tok):
-                display_tokens.append(tok)
-
-    spoken_text = " ".join(spoken_tokens)
-    return spoken_text, display_tokens
+    tokens = text.split()
+    return [tok for tok in tokens if re.search(r"[\w]", tok)]
 
 def convert_wav_to_mp3(wav_path: str, mp3_path: str):
     """Converts WAV to 48kHz high-bitrate MP3 using remotion ffmpeg."""
@@ -330,10 +137,9 @@ def generate_audio(text: str, voice: str, clone_ref: str, clone_text: str, fps: 
     from vieneu import Vieneu
     from faster_whisper import WhisperModel
 
-    spoken_text, display_tokens = transform_phonetics(text)
+    display_tokens = extract_display_tokens(text)
     print(f"\n[VieNeu-TTS Engine (48kHz Studio Quality)]")
-    print(f"Original Text: {text}")
-    print(f"Spoken Text (Phonetic Engine): {spoken_text}")
+    print(f"Input Text: {text}")
     if clone_ref:
         print(f"Voice Cloning Target: {clone_ref}")
     else:
@@ -342,9 +148,9 @@ def generate_audio(text: str, voice: str, clone_ref: str, clone_text: str, fps: 
     print("Synthesizing neural audio...")
     tts = Vieneu()
     if clone_ref:
-        audio = tts.infer(text=spoken_text, ref_audio=clone_ref, ref_text=clone_text)
+        audio = tts.infer(text=text, ref_audio=clone_ref, ref_text=clone_text)
     else:
-        audio = tts.infer(text=spoken_text, voice=voice)
+        audio = tts.infer(text=text, voice=voice)
 
     with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmp_wav:
         tmp_wav_path = tmp_wav.name
@@ -367,7 +173,7 @@ def generate_audio(text: str, voice: str, clone_ref: str, clone_text: str, fps: 
             language="vi",
             word_timestamps=True,
             condition_on_previous_text=False,
-            initial_prompt=spoken_text
+            initial_prompt=text
         )
 
         whisper_words = []
@@ -387,7 +193,7 @@ def generate_audio(text: str, voice: str, clone_ref: str, clone_text: str, fps: 
 
         output_payload = {
             "text": text,
-            "spokenText": spoken_text,
+            "spokenText": text,
             "engine": "vieneu",
             "voice": voice if not clone_ref else f"cloned:{os.path.basename(clone_ref)}",
             "rate": "normal",

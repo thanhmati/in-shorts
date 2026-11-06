@@ -33,6 +33,11 @@ import {
   BACKEND_SHORT_TOTAL_FRAMES,
 } from "./series/it-shorts/BackendDeveloperShort";
 import { it002Episode } from "./series/it-shorts/data/it-002-backend-developer";
+import {
+  HttpProtocolShort,
+  HTTP_SHORT_TOTAL_FRAMES,
+} from "./series/it-shorts/HttpProtocolShort";
+import { it003Episode } from "./series/it-shorts/data/it-003-http-protocol";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -269,6 +274,35 @@ export const RemotionRoot: React.FC = () => {
             width={1080}
             height={1920}
             defaultProps={it002Episode.thumbnail}
+          />
+        )}
+      </Folder>
+      <Folder name="Series-IT-Networking">
+        <Composition
+          id="IT-003"
+          component={HttpProtocolShort}
+          durationInFrames={HTTP_SHORT_TOTAL_FRAMES}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={it003Episode}
+        />
+        <Composition
+          id="HttpProtocolShort"
+          component={HttpProtocolShort}
+          durationInFrames={HTTP_SHORT_TOTAL_FRAMES}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={it003Episode}
+        />
+        {it003Episode.thumbnail && (
+          <Still
+            id="IT-003-Thumbnail"
+            component={VideoThumbnail}
+            width={1080}
+            height={1920}
+            defaultProps={it003Episode.thumbnail}
           />
         )}
       </Folder>

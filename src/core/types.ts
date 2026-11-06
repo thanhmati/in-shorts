@@ -58,13 +58,15 @@ export type VideoSeo = {
 };
 
 export type VideoThumbnailProps = {
-  badgeText: string;
+  tagText?: string;
+  badgeText?: string; // Backward compatibility
   headlineMain: string;
   headlineHighlight: string;
   highlightColor?: string;
-  subText?: string;
+  subText?: string; // Backward compatibility
+  heroVisualType?: "diagram" | "code" | "metaphor";
   codeSnippet?: {
-    filename: string;
+    filename?: string;
     code: string;
     language: string;
   };

@@ -1,0 +1,1420 @@
+{
+  "text": "Mọi ứng dụng Web trên thế giới đều giao tiếp thông qua HTTP như thế nào? Bạn có bao giờ tự hỏi, điều gì thực sự kết nối trình duyệt của bạn với các máy chủ khổng lồ như Google hay Facebook? Đó chính là HTTP, Hypertext Transfer Protocol. Đây là bộ quy tắc ngôn ngữ chung, giúp Client như điện thoại hay máy tính, có thể hiểu và trò chuyện trơn tru với Server máy chủ. Mỗi khi bạn lướt web, Client gửi đi một HTTP Request, giống hệt một phong bì thư. Method xác định hành động: như GET để lấy dữ liệu, hay POST để gửi tin. Headers mang theo thông tin meta như định dạng JSON hay token xác thực. Và Body chính là nội dung dữ liệu bạn muốn truyền tải. Server tiếp nhận, xử lý nghiệp vụ, rồi lập tức hồi đáp bằng một HTTP Response. Đi kèm luôn là các Status Code quen thuộc: 200 OK báo hiệu thành công, hay 404 quen thuộc khi không tìm thấy trang.",
+  "spokenText": "Mọi ứng dụng Web trên thế giới đều giao tiếp thông qua HTTP như thế nào? Bạn có bao giờ tự hỏi, điều gì thực sự kết nối trình duyệt của bạn với các máy chủ khổng lồ như Google hay Facebook? Đó chính là HTTP, Hypertext Transfer Protocol. Đây là bộ quy tắc ngôn ngữ chung, giúp Client như điện thoại hay máy tính, có thể hiểu và trò chuyện trơn tru với Server máy chủ. Mỗi khi bạn lướt web, Client gửi đi một HTTP Request, giống hệt một phong bì thư. Method xác định hành động: như GET để lấy dữ liệu, hay POST để gửi tin. Headers mang theo thông tin meta như định dạng JSON hay token xác thực. Và Body chính là nội dung dữ liệu bạn muốn truyền tải. Server tiếp nhận, xử lý nghiệp vụ, rồi lập tức hồi đáp bằng một HTTP Response. Đi kèm luôn là các Status Code quen thuộc: 200 OK báo hiệu thành công, hay 404 quen thuộc khi không tìm thấy trang.",
+  "engine": "vieneu",
+  "voice": "Hải Đăng",
+  "rate": "normal",
+  "fps": 30,
+  "durationInFrames": 1522,
+  "durationInSeconds": 50.73,
+  "words": [
+    {
+      "word": "Mọi",
+      "spoken": "Mọi",
+      "startSec": 0.0,
+      "endSec": 0.2,
+      "startFrame": 0,
+      "endFrame": 6
+    },
+    {
+      "word": "ứng",
+      "spoken": "ứng",
+      "startSec": 0.2,
+      "endSec": 0.367,
+      "startFrame": 6,
+      "endFrame": 11
+    },
+    {
+      "word": "dụng",
+      "spoken": "dụng",
+      "startSec": 0.367,
+      "endSec": 0.633,
+      "startFrame": 11,
+      "endFrame": 19
+    },
+    {
+      "word": "Web",
+      "spoken": "web",
+      "startSec": 0.633,
+      "endSec": 0.767,
+      "startFrame": 19,
+      "endFrame": 23
+    },
+    {
+      "word": "trên",
+      "spoken": "trên",
+      "startSec": 0.767,
+      "endSec": 1.033,
+      "startFrame": 23,
+      "endFrame": 31
+    },
+    {
+      "word": "thế",
+      "spoken": "thế",
+      "startSec": 1.033,
+      "endSec": 1.2,
+      "startFrame": 31,
+      "endFrame": 36
+    },
+    {
+      "word": "giới",
+      "spoken": "giới,",
+      "startSec": 1.2,
+      "endSec": 1.467,
+      "startFrame": 36,
+      "endFrame": 44
+    },
+    {
+      "word": "đều",
+      "spoken": "đều",
+      "startSec": 1.667,
+      "endSec": 1.767,
+      "startFrame": 50,
+      "endFrame": 53
+    },
+    {
+      "word": "giao",
+      "spoken": "giao",
+      "startSec": 1.767,
+      "endSec": 1.967,
+      "startFrame": 53,
+      "endFrame": 59
+    },
+    {
+      "word": "tiếp",
+      "spoken": "tiếp",
+      "startSec": 1.967,
+      "endSec": 2.1,
+      "startFrame": 59,
+      "endFrame": 63
+    },
+    {
+      "word": "thông",
+      "spoken": "thông",
+      "startSec": 2.1,
+      "endSec": 2.333,
+      "startFrame": 63,
+      "endFrame": 70
+    },
+    {
+      "word": "qua",
+      "spoken": "qua",
+      "startSec": 2.333,
+      "endSec": 2.5,
+      "startFrame": 70,
+      "endFrame": 75
+    },
+    {
+      "word": "HTTP",
+      "spoken": "HTTP",
+      "startSec": 2.5,
+      "endSec": 2.833,
+      "startFrame": 75,
+      "endFrame": 85
+    },
+    {
+      "word": "như",
+      "spoken": "như",
+      "startSec": 2.833,
+      "endSec": 3.233,
+      "startFrame": 85,
+      "endFrame": 97
+    },
+    {
+      "word": "thế",
+      "spoken": "thế",
+      "startSec": 3.233,
+      "endSec": 3.367,
+      "startFrame": 97,
+      "endFrame": 101
+    },
+    {
+      "word": "nào?",
+      "spoken": "nào.",
+      "startSec": 3.367,
+      "endSec": 3.533,
+      "startFrame": 101,
+      "endFrame": 106
+    },
+    {
+      "word": "Bạn",
+      "spoken": "Bạn",
+      "startSec": 4.033,
+      "endSec": 4.167,
+      "startFrame": 121,
+      "endFrame": 125
+    },
+    {
+      "word": "có",
+      "spoken": "có",
+      "startSec": 4.167,
+      "endSec": 4.267,
+      "startFrame": 125,
+      "endFrame": 128
+    },
+    {
+      "word": "bao",
+      "spoken": "bao",
+      "startSec": 4.267,
+      "endSec": 4.433,
+      "startFrame": 128,
+      "endFrame": 133
+    },
+    {
+      "word": "giờ",
+      "spoken": "giờ",
+      "startSec": 4.433,
+      "endSec": 4.533,
+      "startFrame": 133,
+      "endFrame": 136
+    },
+    {
+      "word": "tự",
+      "spoken": "tự",
+      "startSec": 4.533,
+      "endSec": 4.733,
+      "startFrame": 136,
+      "endFrame": 142
+    },
+    {
+      "word": "hỏi,",
+      "spoken": "hỏi.",
+      "startSec": 4.733,
+      "endSec": 4.967,
+      "startFrame": 142,
+      "endFrame": 149
+    },
+    {
+      "word": "điều",
+      "spoken": "điều",
+      "startSec": 4.967,
+      "endSec": 5.633,
+      "startFrame": 149,
+      "endFrame": 169
+    },
+    {
+      "word": "gì",
+      "spoken": "gì",
+      "startSec": 5.633,
+      "endSec": 5.767,
+      "startFrame": 169,
+      "endFrame": 173
+    },
+    {
+      "word": "thực",
+      "spoken": "thực",
+      "startSec": 5.767,
+      "endSec": 5.933,
+      "startFrame": 173,
+      "endFrame": 178
+    },
+    {
+      "word": "sự",
+      "spoken": "sự",
+      "startSec": 5.933,
+      "endSec": 6.067,
+      "startFrame": 178,
+      "endFrame": 182
+    },
+    {
+      "word": "kết",
+      "spoken": "kết",
+      "startSec": 6.067,
+      "endSec": 6.267,
+      "startFrame": 182,
+      "endFrame": 188
+    },
+    {
+      "word": "nối",
+      "spoken": "nối",
+      "startSec": 6.267,
+      "endSec": 6.467,
+      "startFrame": 188,
+      "endFrame": 194
+    },
+    {
+      "word": "trình",
+      "spoken": "trình",
+      "startSec": 6.467,
+      "endSec": 6.667,
+      "startFrame": 194,
+      "endFrame": 200
+    },
+    {
+      "word": "duyệt",
+      "spoken": "duyệt",
+      "startSec": 6.667,
+      "endSec": 6.9,
+      "startFrame": 200,
+      "endFrame": 207
+    },
+    {
+      "word": "của",
+      "spoken": "của",
+      "startSec": 6.9,
+      "endSec": 7.0,
+      "startFrame": 207,
+      "endFrame": 210
+    },
+    {
+      "word": "bạn",
+      "spoken": "bạn",
+      "startSec": 7.0,
+      "endSec": 7.167,
+      "startFrame": 210,
+      "endFrame": 215
+    },
+    {
+      "word": "với",
+      "spoken": "với",
+      "startSec": 7.167,
+      "endSec": 7.367,
+      "startFrame": 215,
+      "endFrame": 221
+    },
+    {
+      "word": "các",
+      "spoken": "các",
+      "startSec": 7.367,
+      "endSec": 7.533,
+      "startFrame": 221,
+      "endFrame": 226
+    },
+    {
+      "word": "máy",
+      "spoken": "máy",
+      "startSec": 7.533,
+      "endSec": 7.733,
+      "startFrame": 226,
+      "endFrame": 232
+    },
+    {
+      "word": "chủ",
+      "spoken": "chủ",
+      "startSec": 7.733,
+      "endSec": 7.867,
+      "startFrame": 232,
+      "endFrame": 236
+    },
+    {
+      "word": "khổng",
+      "spoken": "khổng",
+      "startSec": 7.867,
+      "endSec": 8.167,
+      "startFrame": 236,
+      "endFrame": 245
+    },
+    {
+      "word": "lồ",
+      "spoken": "lồ",
+      "startSec": 8.167,
+      "endSec": 8.3,
+      "startFrame": 245,
+      "endFrame": 249
+    },
+    {
+      "word": "như",
+      "spoken": "như",
+      "startSec": 8.3,
+      "endSec": 8.467,
+      "startFrame": 249,
+      "endFrame": 254
+    },
+    {
+      "word": "Google",
+      "spoken": "Google",
+      "startSec": 8.467,
+      "endSec": 8.8,
+      "startFrame": 254,
+      "endFrame": 264
+    },
+    {
+      "word": "hay",
+      "spoken": "hay",
+      "startSec": 8.8,
+      "endSec": 9.067,
+      "startFrame": 264,
+      "endFrame": 272
+    },
+    {
+      "word": "Facebook?",
+      "spoken": "Facebook?",
+      "startSec": 9.067,
+      "endSec": 9.433,
+      "startFrame": 272,
+      "endFrame": 283
+    },
+    {
+      "word": "Đó",
+      "spoken": "Đó",
+      "startSec": 10.067,
+      "endSec": 10.233,
+      "startFrame": 302,
+      "endFrame": 307
+    },
+    {
+      "word": "chính",
+      "spoken": "chính",
+      "startSec": 10.233,
+      "endSec": 10.367,
+      "startFrame": 307,
+      "endFrame": 311
+    },
+    {
+      "word": "là",
+      "spoken": "là",
+      "startSec": 10.367,
+      "endSec": 10.533,
+      "startFrame": 311,
+      "endFrame": 316
+    },
+    {
+      "word": "HTTP,",
+      "spoken": "HTTP",
+      "startSec": 10.533,
+      "endSec": 11.0,
+      "startFrame": 316,
+      "endFrame": 330
+    },
+    {
+      "word": "Hypertext",
+      "spoken": "Hypertext",
+      "startSec": 11.0,
+      "endSec": 11.967,
+      "startFrame": 330,
+      "endFrame": 359
+    },
+    {
+      "word": "Transfer",
+      "spoken": "Transfer",
+      "startSec": 11.967,
+      "endSec": 12.567,
+      "startFrame": 359,
+      "endFrame": 377
+    },
+    {
+      "word": "Protocol.",
+      "spoken": "Protocol.",
+      "startSec": 12.567,
+      "endSec": 13.1,
+      "startFrame": 377,
+      "endFrame": 393
+    },
+    {
+      "word": "Đây",
+      "spoken": "Đây",
+      "startSec": 13.733,
+      "endSec": 13.867,
+      "startFrame": 412,
+      "endFrame": 416
+    },
+    {
+      "word": "là",
+      "spoken": "là",
+      "startSec": 13.867,
+      "endSec": 14.033,
+      "startFrame": 416,
+      "endFrame": 421
+    },
+    {
+      "word": "bộ",
+      "spoken": "bộ",
+      "startSec": 14.033,
+      "endSec": 14.133,
+      "startFrame": 421,
+      "endFrame": 424
+    },
+    {
+      "word": "quy",
+      "spoken": "quy",
+      "startSec": 14.133,
+      "endSec": 14.333,
+      "startFrame": 424,
+      "endFrame": 430
+    },
+    {
+      "word": "tắc",
+      "spoken": "tắc",
+      "startSec": 14.333,
+      "endSec": 14.433,
+      "startFrame": 430,
+      "endFrame": 433
+    },
+    {
+      "word": "ngôn",
+      "spoken": "ngôn",
+      "startSec": 14.433,
+      "endSec": 14.633,
+      "startFrame": 433,
+      "endFrame": 439
+    },
+    {
+      "word": "ngữ",
+      "spoken": "ngữ",
+      "startSec": 14.633,
+      "endSec": 14.933,
+      "startFrame": 439,
+      "endFrame": 448
+    },
+    {
+      "word": "chung,",
+      "spoken": "chung,",
+      "startSec": 14.933,
+      "endSec": 15.233,
+      "startFrame": 448,
+      "endFrame": 457
+    },
+    {
+      "word": "giúp",
+      "spoken": "giúp",
+      "startSec": 15.233,
+      "endSec": 15.533,
+      "startFrame": 457,
+      "endFrame": 466
+    },
+    {
+      "word": "Client",
+      "spoken": "Client",
+      "startSec": 15.533,
+      "endSec": 15.833,
+      "startFrame": 466,
+      "endFrame": 475
+    },
+    {
+      "word": "như",
+      "spoken": "như",
+      "startSec": 15.833,
+      "endSec": 16.033,
+      "startFrame": 475,
+      "endFrame": 481
+    },
+    {
+      "word": "điện",
+      "spoken": "điện",
+      "startSec": 16.033,
+      "endSec": 16.2,
+      "startFrame": 481,
+      "endFrame": 486
+    },
+    {
+      "word": "thoại",
+      "spoken": "thoại",
+      "startSec": 16.2,
+      "endSec": 16.4,
+      "startFrame": 486,
+      "endFrame": 492
+    },
+    {
+      "word": "hay",
+      "spoken": "hay",
+      "startSec": 16.4,
+      "endSec": 16.567,
+      "startFrame": 492,
+      "endFrame": 497
+    },
+    {
+      "word": "máy",
+      "spoken": "máy",
+      "startSec": 16.567,
+      "endSec": 16.667,
+      "startFrame": 497,
+      "endFrame": 500
+    },
+    {
+      "word": "tính,",
+      "spoken": "tính,",
+      "startSec": 16.667,
+      "endSec": 16.867,
+      "startFrame": 500,
+      "endFrame": 506
+    },
+    {
+      "word": "có",
+      "spoken": "có",
+      "startSec": 17.333,
+      "endSec": 17.4,
+      "startFrame": 520,
+      "endFrame": 522
+    },
+    {
+      "word": "thể",
+      "spoken": "thể",
+      "startSec": 17.4,
+      "endSec": 17.533,
+      "startFrame": 522,
+      "endFrame": 526
+    },
+    {
+      "word": "hiểu",
+      "spoken": "hiểu",
+      "startSec": 17.533,
+      "endSec": 17.767,
+      "startFrame": 526,
+      "endFrame": 533
+    },
+    {
+      "word": "và",
+      "spoken": "và",
+      "startSec": 17.767,
+      "endSec": 17.967,
+      "startFrame": 533,
+      "endFrame": 539
+    },
+    {
+      "word": "trò",
+      "spoken": "trò",
+      "startSec": 17.967,
+      "endSec": 18.133,
+      "startFrame": 539,
+      "endFrame": 544
+    },
+    {
+      "word": "chuyện",
+      "spoken": "chuyện",
+      "startSec": 18.133,
+      "endSec": 18.367,
+      "startFrame": 544,
+      "endFrame": 551
+    },
+    {
+      "word": "trơn",
+      "spoken": "trơn",
+      "startSec": 18.367,
+      "endSec": 18.567,
+      "startFrame": 551,
+      "endFrame": 557
+    },
+    {
+      "word": "tru",
+      "spoken": "tru",
+      "startSec": 18.567,
+      "endSec": 18.8,
+      "startFrame": 557,
+      "endFrame": 564
+    },
+    {
+      "word": "với",
+      "spoken": "với",
+      "startSec": 18.8,
+      "endSec": 19.033,
+      "startFrame": 564,
+      "endFrame": 571
+    },
+    {
+      "word": "Server",
+      "spoken": "Server",
+      "startSec": 19.033,
+      "endSec": 19.3,
+      "startFrame": 571,
+      "endFrame": 579
+    },
+    {
+      "word": "máy",
+      "spoken": "máy",
+      "startSec": 19.3,
+      "endSec": 19.567,
+      "startFrame": 579,
+      "endFrame": 587
+    },
+    {
+      "word": "chủ.",
+      "spoken": "chủ.",
+      "startSec": 19.567,
+      "endSec": 19.7,
+      "startFrame": 587,
+      "endFrame": 591
+    },
+    {
+      "word": "Mỗi",
+      "spoken": "Mỗi",
+      "startSec": 20.267,
+      "endSec": 20.467,
+      "startFrame": 608,
+      "endFrame": 614
+    },
+    {
+      "word": "khi",
+      "spoken": "khi",
+      "startSec": 20.467,
+      "endSec": 20.633,
+      "startFrame": 614,
+      "endFrame": 619
+    },
+    {
+      "word": "bạn",
+      "spoken": "bạn",
+      "startSec": 20.633,
+      "endSec": 20.867,
+      "startFrame": 619,
+      "endFrame": 626
+    },
+    {
+      "word": "lướt",
+      "spoken": "lướt",
+      "startSec": 20.867,
+      "endSec": 20.967,
+      "startFrame": 626,
+      "endFrame": 629
+    },
+    {
+      "word": "web,",
+      "spoken": "web,",
+      "startSec": 20.967,
+      "endSec": 21.3,
+      "startFrame": 629,
+      "endFrame": 639
+    },
+    {
+      "word": "Client",
+      "spoken": "Client",
+      "startSec": 21.833,
+      "endSec": 21.933,
+      "startFrame": 655,
+      "endFrame": 658
+    },
+    {
+      "word": "gửi",
+      "spoken": "gửi",
+      "startSec": 21.933,
+      "endSec": 22.233,
+      "startFrame": 658,
+      "endFrame": 667
+    },
+    {
+      "word": "đi",
+      "spoken": "đi",
+      "startSec": 22.233,
+      "endSec": 22.267,
+      "startFrame": 667,
+      "endFrame": 668
+    },
+    {
+      "word": "một",
+      "spoken": "một",
+      "startSec": 22.267,
+      "endSec": 22.4,
+      "startFrame": 668,
+      "endFrame": 672
+    },
+    {
+      "word": "HTTP",
+      "spoken": "HTTP",
+      "startSec": 22.4,
+      "endSec": 22.833,
+      "startFrame": 672,
+      "endFrame": 685
+    },
+    {
+      "word": "Request,",
+      "spoken": "Request,",
+      "startSec": 22.833,
+      "endSec": 23.467,
+      "startFrame": 685,
+      "endFrame": 704
+    },
+    {
+      "word": "giống",
+      "spoken": "giống",
+      "startSec": 24.0,
+      "endSec": 24.067,
+      "startFrame": 720,
+      "endFrame": 722
+    },
+    {
+      "word": "hệt",
+      "spoken": "hệt",
+      "startSec": 24.067,
+      "endSec": 24.2,
+      "startFrame": 722,
+      "endFrame": 726
+    },
+    {
+      "word": "một",
+      "spoken": "một",
+      "startSec": 24.2,
+      "endSec": 24.367,
+      "startFrame": 726,
+      "endFrame": 731
+    },
+    {
+      "word": "phong",
+      "spoken": "phong",
+      "startSec": 24.367,
+      "endSec": 24.567,
+      "startFrame": 731,
+      "endFrame": 737
+    },
+    {
+      "word": "bì",
+      "spoken": "bì",
+      "startSec": 24.567,
+      "endSec": 24.7,
+      "startFrame": 737,
+      "endFrame": 741
+    },
+    {
+      "word": "thư.",
+      "spoken": "thư.",
+      "startSec": 24.7,
+      "endSec": 24.967,
+      "startFrame": 741,
+      "endFrame": 749
+    },
+    {
+      "word": "Method",
+      "spoken": "Method",
+      "startSec": 25.533,
+      "endSec": 25.667,
+      "startFrame": 766,
+      "endFrame": 770
+    },
+    {
+      "word": "xác",
+      "spoken": "xác",
+      "startSec": 25.667,
+      "endSec": 25.933,
+      "startFrame": 770,
+      "endFrame": 778
+    },
+    {
+      "word": "định",
+      "spoken": "định",
+      "startSec": 25.933,
+      "endSec": 26.1,
+      "startFrame": 778,
+      "endFrame": 783
+    },
+    {
+      "word": "hành",
+      "spoken": "hành",
+      "startSec": 26.1,
+      "endSec": 26.233,
+      "startFrame": 783,
+      "endFrame": 787
+    },
+    {
+      "word": "động:",
+      "spoken": "động,",
+      "startSec": 26.233,
+      "endSec": 26.367,
+      "startFrame": 787,
+      "endFrame": 791
+    },
+    {
+      "word": "như",
+      "spoken": "như",
+      "startSec": 26.867,
+      "endSec": 26.967,
+      "startFrame": 806,
+      "endFrame": 809
+    },
+    {
+      "word": "GET",
+      "spoken": "GET",
+      "startSec": 26.967,
+      "endSec": 27.4,
+      "startFrame": 809,
+      "endFrame": 822
+    },
+    {
+      "word": "để",
+      "spoken": "để",
+      "startSec": 27.4,
+      "endSec": 27.733,
+      "startFrame": 822,
+      "endFrame": 832
+    },
+    {
+      "word": "lấy",
+      "spoken": "lấy",
+      "startSec": 27.733,
+      "endSec": 27.833,
+      "startFrame": 832,
+      "endFrame": 835
+    },
+    {
+      "word": "dữ",
+      "spoken": "dữ",
+      "startSec": 27.833,
+      "endSec": 28.0,
+      "startFrame": 835,
+      "endFrame": 840
+    },
+    {
+      "word": "liệu,",
+      "spoken": "liệu,",
+      "startSec": 28.0,
+      "endSec": 28.233,
+      "startFrame": 840,
+      "endFrame": 847
+    },
+    {
+      "word": "hay",
+      "spoken": "hay",
+      "startSec": 28.633,
+      "endSec": 28.733,
+      "startFrame": 859,
+      "endFrame": 862
+    },
+    {
+      "word": "POST",
+      "spoken": "POST",
+      "startSec": 28.733,
+      "endSec": 29.467,
+      "startFrame": 862,
+      "endFrame": 884
+    },
+    {
+      "word": "để",
+      "spoken": "để",
+      "startSec": 29.467,
+      "endSec": 29.733,
+      "startFrame": 884,
+      "endFrame": 892
+    },
+    {
+      "word": "gửi",
+      "spoken": "gửi",
+      "startSec": 29.733,
+      "endSec": 30.167,
+      "startFrame": 892,
+      "endFrame": 905
+    },
+    {
+      "word": "tin.",
+      "spoken": "tin.",
+      "startSec": 30.167,
+      "endSec": 30.567,
+      "startFrame": 905,
+      "endFrame": 917
+    },
+    {
+      "word": "Headers",
+      "spoken": "Headers",
+      "startSec": 30.567,
+      "endSec": 31.0,
+      "startFrame": 917,
+      "endFrame": 930
+    },
+    {
+      "word": "mang",
+      "spoken": "mang",
+      "startSec": 31.0,
+      "endSec": 31.2,
+      "startFrame": 930,
+      "endFrame": 936
+    },
+    {
+      "word": "theo",
+      "spoken": "theo",
+      "startSec": 31.2,
+      "endSec": 31.433,
+      "startFrame": 936,
+      "endFrame": 943
+    },
+    {
+      "word": "thông",
+      "spoken": "thông",
+      "startSec": 31.433,
+      "endSec": 31.633,
+      "startFrame": 943,
+      "endFrame": 949
+    },
+    {
+      "word": "tin",
+      "spoken": "tin",
+      "startSec": 31.633,
+      "endSec": 31.8,
+      "startFrame": 949,
+      "endFrame": 954
+    },
+    {
+      "word": "meta",
+      "spoken": "meta",
+      "startSec": 31.8,
+      "endSec": 32.133,
+      "startFrame": 954,
+      "endFrame": 964
+    },
+    {
+      "word": "như",
+      "spoken": "như",
+      "startSec": 32.133,
+      "endSec": 32.433,
+      "startFrame": 964,
+      "endFrame": 973
+    },
+    {
+      "word": "định",
+      "spoken": "định",
+      "startSec": 32.433,
+      "endSec": 32.633,
+      "startFrame": 973,
+      "endFrame": 979
+    },
+    {
+      "word": "dạng",
+      "spoken": "dạng",
+      "startSec": 32.633,
+      "endSec": 32.867,
+      "startFrame": 979,
+      "endFrame": 986
+    },
+    {
+      "word": "JSON",
+      "spoken": "JSON",
+      "startSec": 32.867,
+      "endSec": 33.167,
+      "startFrame": 986,
+      "endFrame": 995
+    },
+    {
+      "word": "hay",
+      "spoken": "hay",
+      "startSec": 33.167,
+      "endSec": 33.433,
+      "startFrame": 995,
+      "endFrame": 1003
+    },
+    {
+      "word": "token",
+      "spoken": "token",
+      "startSec": 33.433,
+      "endSec": 33.7,
+      "startFrame": 1003,
+      "endFrame": 1011
+    },
+    {
+      "word": "xác",
+      "spoken": "xác",
+      "startSec": 33.7,
+      "endSec": 33.933,
+      "startFrame": 1011,
+      "endFrame": 1018
+    },
+    {
+      "word": "thực.",
+      "spoken": "thực",
+      "startSec": 33.933,
+      "endSec": 34.133,
+      "startFrame": 1018,
+      "endFrame": 1024
+    },
+    {
+      "word": "Và",
+      "spoken": "và",
+      "startSec": 34.133,
+      "endSec": 34.633,
+      "startFrame": 1024,
+      "endFrame": 1039
+    },
+    {
+      "word": "Body",
+      "spoken": "body",
+      "startSec": 34.633,
+      "endSec": 34.867,
+      "startFrame": 1039,
+      "endFrame": 1046
+    },
+    {
+      "word": "chính",
+      "spoken": "chính",
+      "startSec": 34.867,
+      "endSec": 35.167,
+      "startFrame": 1046,
+      "endFrame": 1055
+    },
+    {
+      "word": "là",
+      "spoken": "là",
+      "startSec": 35.167,
+      "endSec": 35.3,
+      "startFrame": 1055,
+      "endFrame": 1059
+    },
+    {
+      "word": "nội",
+      "spoken": "nội",
+      "startSec": 35.3,
+      "endSec": 35.433,
+      "startFrame": 1059,
+      "endFrame": 1063
+    },
+    {
+      "word": "dung",
+      "spoken": "dung",
+      "startSec": 35.433,
+      "endSec": 35.633,
+      "startFrame": 1063,
+      "endFrame": 1069
+    },
+    {
+      "word": "dữ",
+      "spoken": "dữ",
+      "startSec": 35.633,
+      "endSec": 35.8,
+      "startFrame": 1069,
+      "endFrame": 1074
+    },
+    {
+      "word": "liệu",
+      "spoken": "liệu",
+      "startSec": 35.8,
+      "endSec": 36.0,
+      "startFrame": 1074,
+      "endFrame": 1080
+    },
+    {
+      "word": "bạn",
+      "spoken": "bạn",
+      "startSec": 36.0,
+      "endSec": 36.167,
+      "startFrame": 1080,
+      "endFrame": 1085
+    },
+    {
+      "word": "muốn",
+      "spoken": "muốn",
+      "startSec": 36.167,
+      "endSec": 36.333,
+      "startFrame": 1085,
+      "endFrame": 1090
+    },
+    {
+      "word": "truyền",
+      "spoken": "truyền",
+      "startSec": 36.333,
+      "endSec": 36.533,
+      "startFrame": 1090,
+      "endFrame": 1096
+    },
+    {
+      "word": "tải.",
+      "spoken": "tải,",
+      "startSec": 36.533,
+      "endSec": 36.767,
+      "startFrame": 1096,
+      "endFrame": 1103
+    },
+    {
+      "word": "Server",
+      "spoken": "Server",
+      "startSec": 36.767,
+      "endSec": 37.567,
+      "startFrame": 1103,
+      "endFrame": 1127
+    },
+    {
+      "word": "tiếp",
+      "spoken": "tiếp",
+      "startSec": 37.567,
+      "endSec": 37.633,
+      "startFrame": 1127,
+      "endFrame": 1129
+    },
+    {
+      "word": "nhận,",
+      "spoken": "nhận,",
+      "startSec": 37.633,
+      "endSec": 38.0,
+      "startFrame": 1129,
+      "endFrame": 1140
+    },
+    {
+      "word": "xử",
+      "spoken": "xử",
+      "startSec": 38.0,
+      "endSec": 38.367,
+      "startFrame": 1140,
+      "endFrame": 1151
+    },
+    {
+      "word": "lý",
+      "spoken": "lý",
+      "startSec": 38.367,
+      "endSec": 38.467,
+      "startFrame": 1151,
+      "endFrame": 1154
+    },
+    {
+      "word": "nghiệp",
+      "spoken": "nghiệp",
+      "startSec": 38.467,
+      "endSec": 38.7,
+      "startFrame": 1154,
+      "endFrame": 1161
+    },
+    {
+      "word": "vụ,",
+      "spoken": "vụ,",
+      "startSec": 38.7,
+      "endSec": 38.833,
+      "startFrame": 1161,
+      "endFrame": 1165
+    },
+    {
+      "word": "rồi",
+      "spoken": "rồi",
+      "startSec": 39.233,
+      "endSec": 39.3,
+      "startFrame": 1177,
+      "endFrame": 1179
+    },
+    {
+      "word": "lập",
+      "spoken": "lập",
+      "startSec": 39.3,
+      "endSec": 39.5,
+      "startFrame": 1179,
+      "endFrame": 1185
+    },
+    {
+      "word": "tức",
+      "spoken": "tức",
+      "startSec": 39.5,
+      "endSec": 39.6,
+      "startFrame": 1185,
+      "endFrame": 1188
+    },
+    {
+      "word": "hồi",
+      "spoken": "hồi",
+      "startSec": 39.6,
+      "endSec": 39.8,
+      "startFrame": 1188,
+      "endFrame": 1194
+    },
+    {
+      "word": "đáp",
+      "spoken": "đáp",
+      "startSec": 39.8,
+      "endSec": 40.033,
+      "startFrame": 1194,
+      "endFrame": 1201
+    },
+    {
+      "word": "bằng",
+      "spoken": "bằng",
+      "startSec": 40.033,
+      "endSec": 40.233,
+      "startFrame": 1201,
+      "endFrame": 1207
+    },
+    {
+      "word": "một",
+      "spoken": "một",
+      "startSec": 40.233,
+      "endSec": 40.433,
+      "startFrame": 1207,
+      "endFrame": 1213
+    },
+    {
+      "word": "HTTP",
+      "spoken": "HTTP",
+      "startSec": 40.433,
+      "endSec": 41.033,
+      "startFrame": 1213,
+      "endFrame": 1231
+    },
+    {
+      "word": "Response.",
+      "spoken": "response.",
+      "startSec": 41.033,
+      "endSec": 41.867,
+      "startFrame": 1231,
+      "endFrame": 1256
+    },
+    {
+      "word": "Đi",
+      "spoken": "Đi",
+      "startSec": 42.567,
+      "endSec": 42.733,
+      "startFrame": 1277,
+      "endFrame": 1282
+    },
+    {
+      "word": "kèm",
+      "spoken": "kèm",
+      "startSec": 42.733,
+      "endSec": 42.833,
+      "startFrame": 1282,
+      "endFrame": 1285
+    },
+    {
+      "word": "luôn",
+      "spoken": "luôn",
+      "startSec": 42.833,
+      "endSec": 43.0,
+      "startFrame": 1285,
+      "endFrame": 1290
+    },
+    {
+      "word": "là",
+      "spoken": "là",
+      "startSec": 43.0,
+      "endSec": 43.233,
+      "startFrame": 1290,
+      "endFrame": 1297
+    },
+    {
+      "word": "các",
+      "spoken": "các",
+      "startSec": 43.233,
+      "endSec": 43.367,
+      "startFrame": 1297,
+      "endFrame": 1301
+    },
+    {
+      "word": "Status",
+      "spoken": "status",
+      "startSec": 43.367,
+      "endSec": 43.767,
+      "startFrame": 1301,
+      "endFrame": 1313
+    },
+    {
+      "word": "Code",
+      "spoken": "code",
+      "startSec": 43.767,
+      "endSec": 44.167,
+      "startFrame": 1313,
+      "endFrame": 1325
+    },
+    {
+      "word": "quen",
+      "spoken": "quen",
+      "startSec": 44.167,
+      "endSec": 44.367,
+      "startFrame": 1325,
+      "endFrame": 1331
+    },
+    {
+      "word": "thuộc:",
+      "spoken": "thuộc",
+      "startSec": 44.367,
+      "endSec": 44.633,
+      "startFrame": 1331,
+      "endFrame": 1339
+    },
+    {
+      "word": "200",
+      "spoken": "200",
+      "startSec": 44.633,
+      "endSec": 45.133,
+      "startFrame": 1339,
+      "endFrame": 1354
+    },
+    {
+      "word": "OK",
+      "spoken": "OK",
+      "startSec": 45.133,
+      "endSec": 45.667,
+      "startFrame": 1354,
+      "endFrame": 1370
+    },
+    {
+      "word": "báo",
+      "spoken": "báo",
+      "startSec": 45.667,
+      "endSec": 45.867,
+      "startFrame": 1370,
+      "endFrame": 1376
+    },
+    {
+      "word": "hiệu",
+      "spoken": "hiệu",
+      "startSec": 45.867,
+      "endSec": 46.033,
+      "startFrame": 1376,
+      "endFrame": 1381
+    },
+    {
+      "word": "thành",
+      "spoken": "thành",
+      "startSec": 46.033,
+      "endSec": 46.2,
+      "startFrame": 1381,
+      "endFrame": 1386
+    },
+    {
+      "word": "công,",
+      "spoken": "công",
+      "startSec": 46.2,
+      "endSec": 46.433,
+      "startFrame": 1386,
+      "endFrame": 1393
+    },
+    {
+      "word": "hay",
+      "spoken": "hay",
+      "startSec": 46.433,
+      "endSec": 47.033,
+      "startFrame": 1393,
+      "endFrame": 1411
+    },
+    {
+      "word": "404",
+      "spoken": "404",
+      "startSec": 47.033,
+      "endSec": 47.633,
+      "startFrame": 1411,
+      "endFrame": 1429
+    },
+    {
+      "word": "quen",
+      "spoken": "quen",
+      "startSec": 47.633,
+      "endSec": 47.933,
+      "startFrame": 1429,
+      "endFrame": 1438
+    },
+    {
+      "word": "thuộc",
+      "spoken": "thuộc",
+      "startSec": 47.933,
+      "endSec": 48.233,
+      "startFrame": 1438,
+      "endFrame": 1447
+    },
+    {
+      "word": "khi",
+      "spoken": "khi",
+      "startSec": 48.233,
+      "endSec": 48.433,
+      "startFrame": 1447,
+      "endFrame": 1453
+    },
+    {
+      "word": "không",
+      "spoken": "không",
+      "startSec": 48.433,
+      "endSec": 48.633,
+      "startFrame": 1453,
+      "endFrame": 1459
+    },
+    {
+      "word": "tìm",
+      "spoken": "tìm",
+      "startSec": 48.633,
+      "endSec": 48.867,
+      "startFrame": 1459,
+      "endFrame": 1466
+    },
+    {
+      "word": "thấy",
+      "spoken": "thấy",
+      "startSec": 48.867,
+      "endSec": 48.967,
+      "startFrame": 1466,
+      "endFrame": 1469
+    },
+    {
+      "word": "trang.",
+      "spoken": "trang.",
+      "startSec": 48.967,
+      "endSec": 49.233,
+      "startFrame": 1469,
+      "endFrame": 1477
+    }
+  ]
+}

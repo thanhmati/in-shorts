@@ -142,3 +142,45 @@ AI agents MUST reuse the standardized motion graphics library in `src/core/motio
 2. **Safe Framing**: Keep camera zoom clamped between $1.00$ and $1.15$ for focus beats. Never crop captions or header badges.
 3. **Typography Minimums**: Mobile safe target $\ge 56\text{px}$ for headlines, $\ge 24\text{px} - 26\text{px}$ for code, $\ge 34\text{px}$ for captions.
 4. **Reference Validation**: When authoring `NodeGraph`, `PacketFlow`, or `StateTransition`, verify that all referenced target IDs exist in the defined list.
+
+## 11. THUMBNAIL DESIGN SYSTEM & HIGH-CTR SPECIFICATION
+
+Thumbnail quyết định 80% tỷ lệ click (CTR) trên mobile feed (YouTube Shorts, TikTok, Facebook Reels). Màn hình feed điện thoại hiển thị thumbnail rất nhỏ (~120px - 180px chiều rộng), do đó mọi thiết kế nhồi nhét chữ, nhiều hộp thông tin hoặc viền rối mắt đều gây giảm CTR nghiêm trọng.
+
+### 11.1. Triết lý thiết kế cốt lõi (1-Glance / 1-Idea Rule)
+- **1 Ý niệm - 1 Hình ảnh trọng tâm - Hiểu trong 1 giây**: Người xem lướt qua feed trong 0.5s - 1s, thumbnail phải ngay lập tức kích thích tò mò về mặt thị giác mà không bắt người xem phải đọc văn bản.
+- **Không gian thở (Generous Negative Space)**: Tối thiểu 40% diện tích là nền âm bản sạch sẽ với ánh sáng ambient glow dịu nhẹ, tạo chiều sâu chuẩn Cyberpunk / Modern SaaS.
+
+### 11.2. Quy tắc Typography & Giới hạn Text (Max 3-6 Words Total)
+- **TỔNG LƯỢNG CHỮ TRÊN TOÀN BỘ THUMBNAIL KHÔNG QUÁ 3 - 6 TỪ**:
+  - **1 Hero Hook Title duy nhất**: Chiếm vị trí đắc địa (nửa trên).
+    - Font size cực đại: `84px - 104px`, font weight: `900 - 950` (Black/Extrabold).
+    - Line height chặt chẽ: `1.15 - 1.20`.
+    - Phối màu tương phản cao: Màu trắng tinh `#FFFFFF` kết hợp 1 - 2 từ khóa then chốt mang màu Neon Accent (Cyan `#38BDF8`, Emerald `#10B981`, Amber `#FBBF24`).
+  - **Tối đa 1 Tag Pill nhỏ (Tùy chọn)**: 1 - 2 từ (ví dụ: `#WEB`, `#NESTJS`, `#BACKEND`), font size `20px - 22px`.
+  - **Tuyệt đối KHÔNG có subtitle giải thích, KHÔNG có subText box, KHÔNG có bullet points**.
+
+### 11.3. Hero Visual Graphic (Hình ảnh đại diện thay vì Code rác)
+- Chiếm 45% - 55% diện tích trung tâm thumbnail.
+- Ưu tiên hiển thị một **Hero Visual Graphic** trực quan, sắc nét:
+  - **Architecture / Node Graphic**: Sơ đồ 2-3 khối tương tác tối giản (ví dụ: `CLIENT ⟷ SERVER`, hoặc `Request ➔ 200 OK`).
+  - **Visual Metaphor**: Biểu tượng phát sáng trung tâm (Glowing World Hub, Security Shield, Database Pipeline).
+  - **Nếu hiển thị Code Snippet**:
+    - **Tối đa 2 - 3 dòng code ngắn gọn nhất**: Font size $\ge 32\text{px}$, chỉ giữ lại dòng code "ăn tiền" nhất.
+    - **CẤM viết comment giải thích lê thê** (`// Cỗ máy backend vận hành...`, `1. RateLimit -> ...`). Code phải tự nói lên ý đồ.
+
+### 11.4. Chính sách loại bỏ toàn bộ thành phần rác (Zero Clutter Policy)
+- ❌ **CẤM viền Neon bao quanh màn hình** (như viền đỏ `inset: 24px` - tạo cảm giác chật chội, nghiệp dư).
+- ❌ **CẤM badge nền tảng thừa thãi** (`SHORTS • REELS • TIKTOK` - người xem đã ở trên nền tảng đó, không cần nhắc lại).
+- ❌ **CẤM nút bấm giả CTA** (`BẤM XEM ĐỂ FIX NGAY! 🚀` - người dùng mobile chạm toàn màn hình, không ai click vào nút vẽ trên ảnh).
+- ❌ **CẤM các hộp sub-hook / warning box phụ** chen chúc dưới tiêu đề.
+- ✅ **Branding tối giản**: Chỉ đặt 1 pill watermark `@laptrinhfullstack` nhỏ gọn, tinh tế ở mép trên.
+
+### 11.5. Bảng màu & Tương phản chuẩn (Strict 2-Color Rule)
+- **Background**: Nền tối sâu `THEME.colors.bgDarker` (`#0B0F19`) với các đốm sáng radial ambient mờ phía sau vật thể chính.
+- **Chủ đạo**: Màu trắng `#FFFFFF` cho chữ chính.
+- **1 Màu Accent duy nhất**: Nhất quán theo chủ đề:
+  - Web & Protocol / Networking: Cyan `#38BDF8`
+  - Performance / System / Database: Emerald `#10B981`
+  - Warning / Bug Fix / Interview Trick: Amber `#FBBF24`
+  - Architecture / Framework: Purple `#A855F7`
