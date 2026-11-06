@@ -1,18 +1,28 @@
 #!/usr/bin/env python3
 """
 TTS & Word-level Captions Generator for Remotion Shorts.
+Engine: VieNeu-TTS (48kHz Neural Audio, On-device, Voice Cloning)
 Includes Smart Phonetic Engine for Vietnamese IT/Tech pronunciation.
 - Pronounces technical English terms in natural Vietnamese dev style.
 - Preserves clean original English code syntax on subtitles and visual layers.
+- Uses faster-whisper alignment layer for frame-accurate Remotion Kinetic Captions.
 """
 
 import sys
 import os
+
+# Auto-reexec inside project .venv if available
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+VENV_PYTHON = os.path.join(PROJECT_ROOT, ".venv", "bin", "python")
+if os.path.exists(VENV_PYTHON) and sys.executable != VENV_PYTHON:
+    os.execv(VENV_PYTHON, [VENV_PYTHON] + sys.argv)
+
 import re
 import argparse
-import asyncio
 import json
-import edge_tts
+import subprocess
+import tempfile
+import difflib
 
 # Comprehensive dictionary for English IT/Tech terms pronounced in Vietnamese dev style
 TECH_PHONETICS = {
@@ -184,6 +194,9 @@ TECH_PHONETICS = {
     "primitive": "pri-mi-típ",
 }
 
+def clean_word(w: str) -> str:
+    return re.sub(r"[^\w]", "", w).lower()
+
 def transform_phonetics(original_text: str):
     """
     Transforms tech terms into phonetic spellings for speech,
@@ -194,7 +207,6 @@ def transform_phonetics(original_text: str):
     display_tokens = []
 
     for tok in tokens:
-        # Separate leading/trailing punctuation
         match = re.match(r"^([^\w\-]*)([\w\-]+)([^\w\-]*)$", tok)
         if match:
             prefix, core, suffix = match.groups()
@@ -208,116 +220,225 @@ def transform_phonetics(original_text: str):
             display_tokens.append(tok)
         else:
             spoken_tokens.append(tok)
-            # Only add to display_tokens if it contains spoken word characters;
-            # standalone punctuation like '...' or '—' produces no WordBoundary event in Edge-TTS.
             if re.search(r"[\w]", tok):
                 display_tokens.append(tok)
 
     spoken_text = " ".join(spoken_tokens)
     return spoken_text, display_tokens
 
-async def generate(text: str, voice: str, rate: str, fps: int, audio_path: str, json_path: str):
-    os.makedirs(os.path.dirname(os.path.abspath(audio_path)), exist_ok=True)
-    os.makedirs(os.path.dirname(os.path.abspath(json_path)), exist_ok=True)
+def convert_wav_to_mp3(wav_path: str, mp3_path: str):
+    """Converts WAV to 48kHz high-bitrate MP3 using remotion ffmpeg."""
+    cmd = [
+        "npx", "remotion", "ffmpeg",
+        "-y",
+        "-i", wav_path,
+        "-b:a", "192k",
+        "-ar", "48000",
+        mp3_path
+    ]
+    res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    if res.returncode != 0:
+        raise RuntimeError(f"FFmpeg conversion failed: {res.stderr}")
+
+def align_words_with_whisper(display_tokens, whisper_words, fps: int = 30):
+    """
+    Aligns original text display tokens with whisper word timestamps using difflib
+    to ensure exact frame alignment for KineticCaptions without missing words.
+    """
+    if not display_tokens:
+        return []
+
+    if not whisper_words:
+        step = 0.3
+        res = []
+        for i, tok in enumerate(display_tokens):
+            s = i * step
+            e = s + step
+            sf = int(round(s * fps))
+            ef = sf + max(int(round(step * fps)), 1)
+            res.append({
+                "word": tok,
+                "spoken": tok,
+                "startSec": round(s, 3),
+                "endSec": round(e, 3),
+                "startFrame": sf,
+                "endFrame": ef
+            })
+        return res
+
+    norm_display = [clean_word(t) for t in display_tokens]
+    norm_whisp = [clean_word(w["word"]) for w in whisper_words]
+
+    matcher = difflib.SequenceMatcher(None, norm_display, norm_whisp)
+    opcodes = matcher.get_opcodes()
+
+    token_times = [None] * len(display_tokens)
+
+    for tag, i1, i2, j1, j2 in opcodes:
+        if tag == "equal":
+            for d_idx, w_idx in zip(range(i1, i2), range(j1, j2)):
+                token_times[d_idx] = (whisper_words[w_idx]["start"], whisper_words[w_idx]["end"], whisper_words[w_idx]["word"])
+        elif tag in ("replace", "delete"):
+            prev_end = whisper_words[j1 - 1]["end"] if j1 > 0 else 0.0
+            next_start = whisper_words[j2]["start"] if j2 < len(whisper_words) else (whisper_words[-1]["end"] if whisper_words else prev_end + 1.0)
+            span = max(next_start - prev_end, 0.1 * (i2 - i1))
+            slot_duration = span / max(i2 - i1, 1)
+
+            for idx_offset, d_idx in enumerate(range(i1, i2)):
+                s = prev_end + idx_offset * slot_duration
+                e = s + slot_duration
+                token_times[d_idx] = (s, e, display_tokens[d_idx])
+
+    last_end = 0.0
+    for idx in range(len(token_times)):
+        if token_times[idx] is None:
+            next_val = None
+            for future in range(idx + 1, len(token_times)):
+                if token_times[future] is not None:
+                    next_val = token_times[future]
+                    break
+            if next_val:
+                slot = (next_val[0] - last_end) / 2.0
+                token_times[idx] = (last_end, last_end + slot, display_tokens[idx])
+            else:
+                token_times[idx] = (last_end, last_end + 0.3, display_tokens[idx])
+        last_end = token_times[idx][1]
+
+    words = []
+    prev_end_frame = 0
+    for idx, tok in enumerate(display_tokens):
+        s, e, spoken = token_times[idx]
+        start_frame = max(int(round(s * fps)), prev_end_frame)
+        end_frame = max(int(round(e * fps)), start_frame + 1)
+        prev_end_frame = end_frame
+
+        words.append({
+            "word": tok,
+            "spoken": spoken.strip() if isinstance(spoken, str) else tok,
+            "startSec": round(start_frame / float(fps), 3),
+            "endSec": round(end_frame / float(fps), 3),
+            "startFrame": start_frame,
+            "endFrame": end_frame,
+        })
+
+    return words
+
+def generate_audio(text: str, voice: str, clone_ref: str, clone_text: str, fps: int, audio_path: str, json_path: str):
+    """
+    Generates audio using VieNeu-TTS (48kHz) and aligns word boundaries using faster-whisper.
+    """
+    from vieneu import Vieneu
+    from faster_whisper import WhisperModel
 
     spoken_text, display_tokens = transform_phonetics(text)
+    print(f"\n[VieNeu-TTS Engine (48kHz Studio Quality)]")
     print(f"Original Text: {text}")
     print(f"Spoken Text (Phonetic Engine): {spoken_text}")
+    if clone_ref:
+        print(f"Voice Cloning Target: {clone_ref}")
+    else:
+        print(f"Voice: {voice}")
 
-    max_retries = 3
-    words = []
-    audio_data = bytearray()
+    print("Synthesizing neural audio...")
+    tts = Vieneu()
+    if clone_ref:
+        audio = tts.infer(text=spoken_text, ref_audio=clone_ref, ref_text=clone_text)
+    else:
+        audio = tts.infer(text=spoken_text, voice=voice)
 
-    for attempt in range(1, max_retries + 1):
-        try:
-            words = []
-            audio_data = bytearray()
-            word_index = 0
+    with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmp_wav:
+        tmp_wav_path = tmp_wav.name
 
-            communicate = edge_tts.Communicate(
-                text=spoken_text,
-                voice=voice,
-                rate=rate,
-                boundary="WordBoundary"
-            )
+    try:
+        tts.save(audio, tmp_wav_path)
 
-            async for chunk in communicate.stream():
-                if chunk["type"] == "audio":
-                    audio_data.extend(chunk["data"])
-                elif chunk["type"] == "WordBoundary":
-                    offset_ticks = chunk["offset"]
-                    duration_ticks = chunk["duration"]
+        # Convert to target format
+        if audio_path.lower().endswith(".mp3"):
+            print(f"Encoding to 48kHz MP3 via Remotion FFmpeg: {audio_path}")
+            convert_wav_to_mp3(tmp_wav_path, audio_path)
+        else:
+            import shutil
+            shutil.copyfile(tmp_wav_path, audio_path)
 
-                    start_sec = offset_ticks / 10_000_000.0
-                    end_sec = (offset_ticks + duration_ticks) / 10_000_000.0
+        print("Aligning word timestamps via faster-whisper...")
+        whisper_model = WhisperModel("base", device="cpu", compute_type="int8")
+        segments, _ = whisper_model.transcribe(
+            tmp_wav_path,
+            language="vi",
+            word_timestamps=True,
+            condition_on_previous_text=False,
+            initial_prompt=spoken_text
+        )
 
-                    start_frame = int(round(start_sec * fps))
-                    end_frame = int(round(end_sec * fps))
-                    if end_frame <= start_frame:
-                        end_frame = start_frame + 1
+        whisper_words = []
+        for segment in segments:
+            for w in segment.words:
+                whisper_words.append({
+                    "word": w.word.strip(),
+                    "start": w.start,
+                    "end": max(w.end, w.start + 0.04)
+                })
 
-                    # Restore original clean display word (e.g. React instead of Ri-ét)
-                    if word_index < len(display_tokens):
-                        display_word = display_tokens[word_index]
-                    else:
-                        display_word = chunk["text"]
+        words = align_words_with_whisper(display_tokens, whisper_words, fps=fps)
 
-                    words.append({
-                        "word": display_word,
-                        "spoken": chunk["text"],
-                        "startSec": round(start_sec, 3),
-                        "endSec": round(end_sec, 3),
-                        "startFrame": start_frame,
-                        "endFrame": end_frame,
-                    })
-                    word_index += 1
+        last_end_frame = words[-1]["endFrame"] if words else 0
+        total_frames = last_end_frame + int(round(1.5 * fps))
+        total_sec = total_frames / float(fps)
 
-            if words and len(audio_data) > 0:
-                break
-        except Exception as err:
-            print(f"Attempt {attempt}/{max_retries} failed ({err}). Retrying in 1.5s...")
-            await asyncio.sleep(1.5)
-            if attempt == max_retries:
-                raise
+        output_payload = {
+            "text": text,
+            "spokenText": spoken_text,
+            "engine": "vieneu",
+            "voice": voice if not clone_ref else f"cloned:{os.path.basename(clone_ref)}",
+            "rate": "normal",
+            "fps": fps,
+            "durationInFrames": total_frames,
+            "durationInSeconds": round(total_sec, 2),
+            "words": words,
+        }
 
-    # Save audio file
-    with open(audio_path, "wb") as f:
-        f.write(audio_data)
+        with open(json_path, "w", encoding="utf-8") as f:
+            json.dump(output_payload, f, ensure_ascii=False, indent=2)
 
-    last_end_frame = words[-1]["endFrame"] if words else 0
-    # Add 1.5 second buffer at end for smooth outro
-    total_frames = last_end_frame + int(round(1.5 * fps))
-    total_sec = total_frames / float(fps)
+        print(f"SUCCESS: Audio written to {audio_path}")
+        print(f"SUCCESS: Subtitles written to {json_path}")
+        print(f"Total Duration: {round(total_sec, 2)}s ({total_frames} frames @ {fps}fps)")
 
-    output_payload = {
-        "text": text,
-        "spokenText": spoken_text,
-        "voice": voice,
-        "rate": rate,
-        "fps": fps,
-        "durationInFrames": total_frames,
-        "durationInSeconds": round(total_sec, 2),
-        "words": words,
-    }
+    finally:
+        if os.path.exists(tmp_wav_path):
+            os.remove(tmp_wav_path)
 
-    with open(json_path, "w", encoding="utf-8") as f:
-        json.dump(output_payload, f, ensure_ascii=False, indent=2)
-
-    print(f"SUCCESS: Audio written to {audio_path}")
-    print(f"SUCCESS: Subtitles written to {json_path}")
-    print(f"Total Duration: {round(total_sec, 2)}s ({total_frames} frames @ {fps}fps)")
+def list_voices():
+    print("=== VieNeu-TTS Preset Voices ===")
+    try:
+        from vieneu import Vieneu
+        tts = Vieneu()
+        for desc, v_id in tts.list_preset_voices():
+            print(f"  • {v_id:<18} : {desc}")
+    except Exception as e:
+        print(f"Could not load VieNeu voices: {e}")
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate TTS with Smart Phonetic Engine for Remotion")
+    parser = argparse.ArgumentParser(description="VieNeu-TTS & Faster-Whisper Subtitle Generator for Remotion Shorts")
     parser.add_argument("--text", type=str, help="Text to speak")
     parser.add_argument("--file", type=str, help="Text file to read")
-    parser.add_argument("--voice", type=str, default="vi-VN-NamMinhNeural", help="Voice name")
-    parser.add_argument("--rate", type=str, default="+10%", help="Speed adjustment (+10%% for Shorts)")
-    parser.add_argument("--fps", type=int, default=30, help="Frames per second")
-    parser.add_argument("--output-audio", type=str, required=True, help="Path to output mp3")
-    parser.add_argument("--output-json", type=str, required=True, help="Path to output json")
+    parser.add_argument("--voice", type=str, default="Hải Đăng", help="Voice name (default: 'Hải Đăng')")
+    parser.add_argument("--clone-ref", type=str, default=None, help="Path to reference audio file (.wav) for Instant Voice Cloning")
+    parser.add_argument("--clone-text", type=str, default=None, help="Transcript of reference audio (optional, improves cloning quality)")
+    parser.add_argument("--fps", type=int, default=30, help="Frames per second (default: 30)")
+    parser.add_argument("--output-audio", type=str, help="Path to output audio (.mp3 or .wav)")
+    parser.add_argument("--output-json", type=str, help="Path to output json metadata")
+    parser.add_argument("--list-voices", action="store_true", help="List all available voices and exit")
 
     args = parser.parse_args()
+
+    if args.list_voices:
+        list_voices()
+        sys.exit(0)
+
+    if not args.output_audio or not args.output_json:
+        print("Error: --output-audio and --output-json are required when generating speech", file=sys.stderr)
+        sys.exit(1)
 
     if args.file:
         with open(args.file, "r", encoding="utf-8") as f:
@@ -328,14 +449,18 @@ def main():
         print("Error: Either --text or --file is required", file=sys.stderr)
         sys.exit(1)
 
-    asyncio.run(generate(
+    os.makedirs(os.path.dirname(os.path.abspath(args.output_audio)), exist_ok=True)
+    os.makedirs(os.path.dirname(os.path.abspath(args.output_json)), exist_ok=True)
+
+    generate_audio(
         text=text,
         voice=args.voice,
-        rate=args.rate,
+        clone_ref=args.clone_ref,
+        clone_text=args.clone_text,
         fps=args.fps,
         audio_path=args.output_audio,
         json_path=args.output_json
-    ))
+    )
 
 if __name__ == "__main__":
     main()

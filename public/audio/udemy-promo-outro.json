@@ -1,219 +1,220 @@
 {
   "text": "Muốn làm chủ NestJS và tự tay xây dựng Real-time Chat App chuẩn Enterprise? Khám phá ngay khóa học của mình tại link dưới bio nhé!",
   "spokenText": "Muốn làm chủ nét-dây-ét và tự tay xây dựng ri-ờ-tam chát áp chuẩn en-tơ-prai? Khám phá ngay khóa học của mình tại linh dưới bi-ô nhé!",
-  "voice": "vi-VN-NamMinhNeural",
-  "rate": "+10%",
+  "engine": "vieneu",
+  "voice": "Hải Đăng",
+  "rate": "normal",
   "fps": 30,
-  "durationInFrames": 265,
-  "durationInSeconds": 8.83,
+  "durationInFrames": 245,
+  "durationInSeconds": 8.17,
   "words": [
     {
       "word": "Muốn",
       "spoken": "Muốn",
-      "startSec": 0.1,
-      "endSec": 0.452,
-      "startFrame": 3,
-      "endFrame": 14
+      "startSec": 0.0,
+      "endSec": 0.267,
+      "startFrame": 0,
+      "endFrame": 8
     },
     {
       "word": "làm",
       "spoken": "làm",
-      "startSec": 0.452,
-      "endSec": 0.611,
-      "startFrame": 14,
-      "endFrame": 18
+      "startSec": 0.267,
+      "endSec": 0.367,
+      "startFrame": 8,
+      "endFrame": 11
     },
     {
       "word": "chủ",
       "spoken": "chủ",
-      "startSec": 0.611,
-      "endSec": 0.793,
-      "startFrame": 18,
-      "endFrame": 24
+      "startSec": 0.367,
+      "endSec": 0.533,
+      "startFrame": 11,
+      "endFrame": 16
     },
     {
       "word": "NestJS",
-      "spoken": "nét-dây-ét",
-      "startSec": 0.793,
-      "endSec": 1.373,
-      "startFrame": 24,
-      "endFrame": 41
+      "spoken": "NestJS",
+      "startSec": 0.533,
+      "endSec": 1.067,
+      "startFrame": 16,
+      "endFrame": 32
     },
     {
       "word": "và",
       "spoken": "và",
-      "startSec": 1.373,
-      "endSec": 1.543,
-      "startFrame": 41,
+      "startSec": 1.067,
+      "endSec": 1.533,
+      "startFrame": 32,
       "endFrame": 46
     },
     {
       "word": "tự",
       "spoken": "tự",
-      "startSec": 1.543,
-      "endSec": 1.714,
+      "startSec": 1.533,
+      "endSec": 1.667,
       "startFrame": 46,
-      "endFrame": 51
+      "endFrame": 50
     },
     {
       "word": "tay",
       "spoken": "tay",
-      "startSec": 1.714,
-      "endSec": 1.884,
-      "startFrame": 51,
-      "endFrame": 57
+      "startSec": 1.667,
+      "endSec": 1.867,
+      "startFrame": 50,
+      "endFrame": 56
     },
     {
       "word": "xây",
       "spoken": "xây",
-      "startSec": 1.884,
-      "endSec": 2.043,
-      "startFrame": 57,
-      "endFrame": 61
+      "startSec": 1.867,
+      "endSec": 2.067,
+      "startFrame": 56,
+      "endFrame": 62
     },
     {
       "word": "dựng",
       "spoken": "dựng",
-      "startSec": 2.043,
-      "endSec": 2.259,
-      "startFrame": 61,
-      "endFrame": 68
+      "startSec": 2.067,
+      "endSec": 2.3,
+      "startFrame": 62,
+      "endFrame": 69
     },
     {
       "word": "Real-time",
-      "spoken": "ri-ờ-tam",
-      "startSec": 2.259,
-      "endSec": 2.702,
-      "startFrame": 68,
-      "endFrame": 81
+      "spoken": "Real-time",
+      "startSec": 2.3,
+      "endSec": 2.6,
+      "startFrame": 69,
+      "endFrame": 78
     },
     {
       "word": "Chat",
-      "spoken": "chát",
-      "startSec": 2.702,
-      "endSec": 2.975,
-      "startFrame": 81,
-      "endFrame": 89
+      "spoken": "Chat",
+      "startSec": 2.6,
+      "endSec": 2.867,
+      "startFrame": 78,
+      "endFrame": 86
     },
     {
       "word": "App",
-      "spoken": "áp",
-      "startSec": 2.975,
-      "endSec": 3.111,
-      "startFrame": 89,
-      "endFrame": 93
+      "spoken": "App",
+      "startSec": 2.867,
+      "endSec": 3.167,
+      "startFrame": 86,
+      "endFrame": 95
     },
     {
       "word": "chuẩn",
       "spoken": "chuẩn",
-      "startSec": 3.111,
-      "endSec": 3.43,
-      "startFrame": 93,
+      "startSec": 3.167,
+      "endSec": 3.433,
+      "startFrame": 95,
       "endFrame": 103
     },
     {
       "word": "Enterprise?",
-      "spoken": "en-tơ-prai",
-      "startSec": 3.43,
-      "endSec": 4.043,
+      "spoken": "Enterprise?",
+      "startSec": 3.433,
+      "endSec": 4.567,
       "startFrame": 103,
-      "endFrame": 121
+      "endFrame": 137
     },
     {
       "word": "Khám",
       "spoken": "Khám",
-      "startSec": 4.8,
-      "endSec": 5.061,
-      "startFrame": 144,
-      "endFrame": 152
+      "startSec": 4.567,
+      "endSec": 4.667,
+      "startFrame": 137,
+      "endFrame": 140
     },
     {
       "word": "phá",
       "spoken": "phá",
-      "startSec": 5.061,
-      "endSec": 5.266,
-      "startFrame": 152,
-      "endFrame": 158
+      "startSec": 4.667,
+      "endSec": 4.833,
+      "startFrame": 140,
+      "endFrame": 145
     },
     {
       "word": "ngay",
       "spoken": "ngay",
-      "startSec": 5.266,
-      "endSec": 5.448,
-      "startFrame": 158,
-      "endFrame": 163
+      "startSec": 4.833,
+      "endSec": 5.067,
+      "startFrame": 145,
+      "endFrame": 152
     },
     {
       "word": "khóa",
       "spoken": "khóa",
-      "startSec": 5.448,
-      "endSec": 5.641,
-      "startFrame": 163,
-      "endFrame": 169
+      "startSec": 5.067,
+      "endSec": 5.3,
+      "startFrame": 152,
+      "endFrame": 159
     },
     {
       "word": "học",
       "spoken": "học",
-      "startSec": 5.641,
-      "endSec": 5.823,
-      "startFrame": 169,
-      "endFrame": 175
+      "startSec": 5.3,
+      "endSec": 5.433,
+      "startFrame": 159,
+      "endFrame": 163
     },
     {
       "word": "của",
       "spoken": "của",
-      "startSec": 5.823,
-      "endSec": 5.914,
-      "startFrame": 175,
-      "endFrame": 177
+      "startSec": 5.433,
+      "endSec": 5.567,
+      "startFrame": 163,
+      "endFrame": 167
     },
     {
       "word": "mình",
       "spoken": "mình",
-      "startSec": 5.914,
-      "endSec": 6.164,
-      "startFrame": 177,
-      "endFrame": 185
+      "startSec": 5.567,
+      "endSec": 5.667,
+      "startFrame": 167,
+      "endFrame": 170
     },
     {
       "word": "tại",
       "spoken": "tại",
-      "startSec": 6.164,
-      "endSec": 6.323,
-      "startFrame": 185,
-      "endFrame": 190
+      "startSec": 5.667,
+      "endSec": 5.867,
+      "startFrame": 170,
+      "endFrame": 176
     },
     {
       "word": "link",
-      "spoken": "linh",
-      "startSec": 6.323,
-      "endSec": 6.539,
-      "startFrame": 190,
-      "endFrame": 196
+      "spoken": "link",
+      "startSec": 5.867,
+      "endSec": 6.0,
+      "startFrame": 176,
+      "endFrame": 180
     },
     {
       "word": "dưới",
       "spoken": "dưới",
-      "startSec": 6.539,
-      "endSec": 6.732,
-      "startFrame": 196,
-      "endFrame": 202
+      "startSec": 6.0,
+      "endSec": 6.233,
+      "startFrame": 180,
+      "endFrame": 187
     },
     {
       "word": "bio",
-      "spoken": "bi-ô",
-      "startSec": 6.732,
-      "endSec": 7.073,
-      "startFrame": 202,
-      "endFrame": 212
+      "spoken": "bio",
+      "startSec": 6.233,
+      "endSec": 6.433,
+      "startFrame": 187,
+      "endFrame": 193
     },
     {
       "word": "nhé!",
-      "spoken": "nhé",
-      "startSec": 7.073,
-      "endSec": 7.334,
-      "startFrame": 212,
-      "endFrame": 220
+      "spoken": "nhé!",
+      "startSec": 6.433,
+      "endSec": 6.667,
+      "startFrame": 193,
+      "endFrame": 200
     }
   ]
 }

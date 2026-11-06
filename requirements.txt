@@ -1,0 +1,7 @@
+vieneu>=3.8.3
+faster-whisper>=1.2.1
+soundfile>=0.14.0
+scipy>=1.18.0
+numpy>=2.5.0
+onnxruntime==1.20.1
+av<14

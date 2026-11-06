@@ -8,6 +8,8 @@ export type WordCaption = {
 
 export type SubtitleData = {
   text: string;
+  spokenText?: string;
+  engine?: string;
   voice: string;
   rate: string;
   fps: number;

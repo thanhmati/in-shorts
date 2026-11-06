@@ -67,7 +67,7 @@ in-shorts/
 │   └── rules/
 │       └── shorts-generator.md         # Quy trình Workflow của Antigravity Agent
 ├── scripts/
-│   └── generate_tts.py                 # Pipeline Edge-TTS + Smart Phonetic Engine
+│   └── generate_tts.py                 # Pipeline VieNeu-TTS (48kHz) + Faster-Whisper Aligner + Smart Phonetics
 ├── public/
 │   ├── audio/                          # File mp3 + json subtitle theo id (vd: [slug].mp3, [slug].json)
 │   ├── courses/                        # Ảnh bìa khóa học Udemy & avatar giảng viên
@@ -211,9 +211,9 @@ export type SeriesAShortProps = {
 ## 6. Đặc tả Âm thanh & Smart Phonetic Engine
 
 1. **Công nghệ TTS**:
-   * Sử dụng Microsoft Edge-TTS qua script [scripts/generate_tts.py](file:///Users/thanhdo/Documents/Project/in-shorts/scripts/generate_tts.py).
-   * Voice mặc định: `vi-VN-NamMinhNeural` (giọng nam miền Bắc dứt khoát, chuyên nghiệp).
-   * Tốc độ: `+10%` (`rate="+10%"`) tạo nhịp điệu nhanh, cuốn hút cho Shorts.
+   * Sử dụng VieNeu-TTS (48kHz Neural Audio chất lượng phòng thu) qua script [scripts/generate_tts.py](file:///Users/tanthanh/Documents/Project/in-shorts/scripts/generate_tts.py).
+   * Voice mặc định: `Hải Đăng` (giọng nam Bắc tự nhiên) hoặc tùy chọn Instant Voice Cloning qua `--clone-ref`.
+   * Căn chỉnh mốc thời gian từng từ chuẩn xác mili-giây bằng Faster-Whisper Aligner.
 2. **Dual-Layer Phonetic Mapping**:
    * **Lớp Audio**: Thay thế các từ tech tiếng Anh thành phiên âm dev Việt Nam (`TECH_PHONETICS`) để AI phát âm tự nhiên:
      * `React` $\to$ `Ri-ét`
